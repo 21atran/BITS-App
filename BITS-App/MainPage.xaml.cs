@@ -7,6 +7,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+
+		BindingContext = new Models.Article(7767);
 	}
 
 	private void OnCounterClicked(object sender, EventArgs e)
