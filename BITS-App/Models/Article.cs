@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace BITS_App.Models
 {
-    internal class Model1
+    internal class Article
     {
+        private int id;
+        public Article(int id)
+        {
+            id = this.id;
+        }
     }
 }
