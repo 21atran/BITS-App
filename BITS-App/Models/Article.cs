@@ -8,27 +8,29 @@ using WordPressPCL;
 
 namespace BITS_App.Models
 {
-    internal class Post {
-        public int id { get; set; }
-        public DateTime date { get; set; }
-        public DateTimeOffset date_gmt { get; set; }
-        public Dictionary<string, string> title { get; set; }
-        public CustomFields custom_fields { get; set; }
-    }
-
-    internal class CustomFields {
-        public string[] writer { get; set; }
-    }
-
-
     internal class Article
     {
-        WordPressClient client;
-        private int id;
-        WordPressPCL.Models.Post post;
-        string raw;
-        Post postJson;
+        // JSON deserialization classes
+        protected class Post {
+            public int id { get; set; }
+            public DateTime date { get; set; }
+            public DateTimeOffset date_gmt { get; set; }
+            public Dictionary<string, string> title { get; set; }
+            public CustomFields custom_fields { get; set; }
+        }
 
+        protected class CustomFields {
+            public string[] writer { get; set; }
+        }
+
+        // fields
+        protected WordPressClient client;
+        protected int id;
+        protected WordPressPCL.Models.Post post;
+        protected string raw;
+        protected Post postJson;
+        
+        // constructor
         public Article(int id)
         {
             client = new WordPressClient("https://gwhsnews.org/wp-json/");
@@ -44,6 +46,7 @@ namespace BITS_App.Models
             postJson = JsonConvert.DeserializeObject<Post>(raw);
         }
 
+        // methods
         public string Title => post.Title.Rendered;
 
         public string Authors => String.Join(", ", postJson.custom_fields.writer);
