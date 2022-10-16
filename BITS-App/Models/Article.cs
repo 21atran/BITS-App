@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,6 +46,6 @@ namespace BITS_App.Models
 
         public string Title => post.Title.Rendered;
 
-        public string Author => post.Author.ToString();
+        public string Authors => String.Join(", ", postJson.custom_fields.writer);
     }
 }

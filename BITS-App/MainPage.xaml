@@ -23,7 +23,7 @@
                 HorizontalOptions="Center" />
 
             <Label
-                Text="{Binding Author}"
+                Text="{Binding Authors}"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"
