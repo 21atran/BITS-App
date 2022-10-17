@@ -29,7 +29,8 @@ namespace BITS_App.Models
         protected WordPressPCL.Models.Post post;
         protected string raw;
         protected Post postJson;
-        
+        protected List<WordPressPCL.Models.MediaItem> medias;
+
         // constructor
         public Article(int id)
         {
@@ -44,11 +45,17 @@ namespace BITS_App.Models
             post = task.Result;
 
             postJson = JsonConvert.DeserializeObject<Post>(raw);
+
+            var pictask = client.Media.GetAllAsync();
+            pictask.Wait();
+            medias = (List<WordPressPCL.Models.MediaItem>)pictask.Result;
         }
 
         // methods
         public string Title => post.Title.Rendered;
 
         public string Authors => String.Join(", ", postJson.custom_fields.writer);
+
+        public string Image => medias[0].Link.ToString();
     }
 }
