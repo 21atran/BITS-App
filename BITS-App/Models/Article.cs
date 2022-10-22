@@ -18,6 +18,8 @@ namespace BITS_App.Models
             public Renderable title { get; set; }
             public Renderable content { get; set; }
             public CustomFields custom_fields { get; set; }
+
+            public int featured_media { get; set; }
         }
 
         protected class Renderable {
@@ -76,5 +78,8 @@ namespace BITS_App.Models
 
         // content string
         public string Content => post.Content.Rendered;
+
+        // id of featured media
+        public int FeaturedMediaID => postJson.featured_media;
     }
 }
