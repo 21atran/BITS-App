@@ -11,7 +11,7 @@
             VerticalOptions="Center">
 
             <Image
-                Source="{Binding Image}"
+                Source="{Binding FeaturedMediaPhoto}"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
