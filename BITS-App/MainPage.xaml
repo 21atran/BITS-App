@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:BITS_App.Models"
              x:Class="BITS_App.MainPage">
-    
+
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
