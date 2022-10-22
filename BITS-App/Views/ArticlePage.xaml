@@ -3,20 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BITS_App.Views.ArticlePage"
              Title="ArticlePage">
-    <VerticalStackLayout Spacing="5" HorizontalOptions="Fill">
-        <Label 
-            Text="The Glen Bard"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    
+    <VerticalStackLayout  HorizontalOptions="Fill">
 
-        <HorizontalStackLayout HorizontalOptions="Fill" Spacing="50"  >
+        <Label 
+            Text=" "
+            VerticalOptions="Center" 
+            HorizontalOptions="Fill"
+            FontAttributes="Bold"
+            FontSize="12"
+            BackgroundColor="ForestGreen"/>
+
+
+            <Label 
+            Text=" The Glen Bard"
+            VerticalOptions="Center" 
+            HorizontalOptions="Fill"
+            FontAttributes="Bold"
+            FontSize="Title"
+            BackgroundColor="ForestGreen"/>
+
+        <Label 
+            Text=" "
+            VerticalOptions="Center" 
+            HorizontalOptions="Fill"
+            FontAttributes="Bold"
+            FontSize="5"
+            BackgroundColor="ForestGreen"/>
+
+        <Label Text="Italics"
+                FontAttributes="Italic" />
+
+        <Label Text="Bold and italics"
+                FontAttributes="Bold, Italic" />
+
+        <HorizontalStackLayout HorizontalOptions="Fill" Spacing="1000"  >
             <Label 
                 Text="Glenbard West Student Newspaper"
                 VerticalOptions="Center" 
-                HorizontalOptions="StartAndExpand" />
+                HorizontalOptions="Start"
+                FontAttributes="Italic"/>
 
             <Label 
-                Text="Hello MAUI!"
+                Text="Amy Tran, 10/22/2022"
                 VerticalOptions="Center" 
                 HorizontalOptions="End" />
         </HorizontalStackLayout>
