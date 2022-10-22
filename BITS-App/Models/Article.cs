@@ -32,6 +32,7 @@ namespace BITS_App.Models
 
         // fields
         protected WordPressClient client;
+        protected WordPressPCL.Models.MediaItem featured;
         protected int id;
         protected WordPressPCL.Models.Post post;
         protected string raw;
@@ -55,6 +56,10 @@ namespace BITS_App.Models
 
             //returns the json backend of site
             postJson = JsonConvert.DeserializeObject<Post>(raw);
+
+            var pictasks = client.Media.GetByIDAsync(postJson.featured_media);
+            pictasks.Wait();
+            featured = pictasks.Result;
 
 
             //list of all the media
@@ -81,5 +86,8 @@ namespace BITS_App.Models
 
         // id of featured media
         public int FeaturedMediaID => postJson.featured_media;
+
+        // photo using MediaItem format
+        public string FeaturedMediaPhoto => featured.Link.ToString();
     }
 }
