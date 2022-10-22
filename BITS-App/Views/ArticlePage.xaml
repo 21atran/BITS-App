@@ -3,10 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BITS_App.Views.ArticlePage"
              Title="ArticlePage">
-    <VerticalStackLayout>
+    <VerticalStackLayout Spacing="5" HorizontalOptions="Fill">
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="The Glen Bard"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <HorizontalStackLayout HorizontalOptions="Fill" Spacing="50"  >
+            <Label 
+                Text="Glenbard West Student Newspaper"
+                VerticalOptions="Center" 
+                HorizontalOptions="StartAndExpand" />
+
+            <Label 
+                Text="Hello MAUI!"
+                VerticalOptions="Center" 
+                HorizontalOptions="End" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
