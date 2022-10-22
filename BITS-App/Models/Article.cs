@@ -16,7 +16,7 @@ namespace BITS_App.Models
             public DateTime date { get; set; }
             public DateTimeOffset date_gmt { get; set; }
             public Renderable title { get; set; }
-            public Renderable content {get; set; }
+            public Renderable content { get; set; }
             public CustomFields custom_fields { get; set; }
         }
 
@@ -75,6 +75,6 @@ namespace BITS_App.Models
         public string Image => medias[0].Link.ToString();
 
         // content string
-        public string Content => post.content.rendered;
+        public string Content => post.Content.Rendered;
     }
 }
