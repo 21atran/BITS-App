@@ -28,6 +28,12 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
+
+            <Label
+                Text="{Binding Content}"
+                FontSize="14"
+                HorizontalOptions="Center" />
+
             <Button
                 x:Name="CounterBtn"
                 Text="Click me"
