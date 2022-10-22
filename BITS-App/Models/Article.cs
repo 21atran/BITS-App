@@ -15,8 +15,13 @@ namespace BITS_App.Models
             public int id { get; set; }
             public DateTime date { get; set; }
             public DateTimeOffset date_gmt { get; set; }
-            public Dictionary<string, string> title { get; set; }
+            public Renderable title { get; set; }
+            public Renderable content {get; set; }
             public CustomFields custom_fields { get; set; }
+        }
+
+        protected class Renderable {
+            public string rendered {get; set; }
         }
 
         protected class CustomFields {
@@ -58,7 +63,8 @@ namespace BITS_App.Models
             medias = (List<WordPressPCL.Models.MediaItem>)pictask.Result;
         }
 
-        // methods
+        // Bindings
+        // title string
         public string Title => post.Title.Rendered;
 
 
@@ -67,5 +73,8 @@ namespace BITS_App.Models
 
         //a link for an image
         public string Image => medias[0].Link.ToString();
+
+        // content string
+        public string Content => post.content.rendered;
     }
 }
