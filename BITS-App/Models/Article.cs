@@ -34,28 +34,38 @@ namespace BITS_App.Models
         // constructor
         public Article(int id)
         {
+            //creating a client, and taking the wordpress data, storing it into a client variable
             client = new WordPressClient("https://gwhsnews.org/wp-json/");
             this.id = id;
 
             raw = "{}";
             client.HttpResponsePreProcessing = (response) => raw = response;
 
+            //gets Posts from website
             var task = client.Posts.GetByIDAsync(id);
             task.Wait();
             post = task.Result;
 
+            //returns the json backend of site
             postJson = JsonConvert.DeserializeObject<Post>(raw);
 
+
+            //list of all the media
             var pictask = client.Media.GetAllAsync();
             pictask.Wait();
+
+            //list of all the medias that are in website, gets a result
             medias = (List<WordPressPCL.Models.MediaItem>)pictask.Result;
         }
 
         // methods
         public string Title => post.Title.Rendered;
 
+
+        //gets a list of authors and joins them in a string
         public string Authors => String.Join(", ", postJson.custom_fields.writer);
 
+        //a link for an image
         public string Image => medias[0].Link.ToString();
     }
 }
