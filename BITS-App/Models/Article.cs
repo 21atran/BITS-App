@@ -20,6 +20,8 @@ namespace BITS_App.Models
             public CustomFields custom_fields { get; set; }
 
             public int featured_media { get; set; }
+
+            public List<Dictionary<string, string>> attachment { get; set; }
         }
 
         protected class Renderable {
@@ -71,7 +73,7 @@ namespace BITS_App.Models
         }
 
         // Bindings
-        // title string
+        // title string 
         public string Title => post.Title.Rendered;
 
 
