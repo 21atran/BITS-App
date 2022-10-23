@@ -45,8 +45,8 @@
                 <Label HorizontalTextAlignment="Center"
                        HorizontalOptions="Center" >
                     <Label.Text>
-                        <MultiBinding StringFormat="{}{0}, Role | {1:M}, {1:yyyy}" >
-                            <Binding Path="Authors" />
+                        <MultiBinding StringFormat="{}{0} | {1:M}, {1:yyyy}" >
+                            <Binding Path="AuthorsAndTitles" />
                             <Binding Path="Date" />
                         </MultiBinding>
                     </Label.Text>

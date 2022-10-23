@@ -8,8 +8,7 @@ using WordPressPCL;
 
 namespace BITS_App.Models
 {
-    internal class Article
-    {
+    internal class Article {
         // JSON deserialization classes
         protected class Post {
             public int id { get; set; }
@@ -25,10 +24,11 @@ namespace BITS_App.Models
         }
 
         protected class Renderable {
-            public string rendered {get; set; }
+            public string rendered { get; set; }
         }
 
         protected class CustomFields {
+            public string[] jobtitle { get; set; }
             public string[] writer { get; set; }
         }
 
@@ -42,8 +42,7 @@ namespace BITS_App.Models
         protected List<WordPressPCL.Models.MediaItem> medias;
 
         // constructor
-        public Article(int id)
-        {
+        public Article(int id) {
             //creating a client, and taking the wordpress data, storing it into a client variable
             client = new WordPressClient("https://gwhsnews.org/wp-json/");
             this.id = id;
@@ -72,12 +71,33 @@ namespace BITS_App.Models
             medias = (List<WordPressPCL.Models.MediaItem>)pictask.Result;
         }
 
+        // helper methods
+        private string authorsTitlesFormatted() {
+            string formatted = "";
+            for (int i = 0; i < postJson.custom_fields.writer.Length; i++) {
+                formatted += postJson.custom_fields.writer[i];
+                formatted += ", ";
+                formatted += postJson.custom_fields.jobtitle[i];
+
+                if (i < postJson.custom_fields.writer.Length - 1) {
+                    formatted += " - ";
+                }
+            }
+            
+            return formatted;
+        }
+
         // Bindings
         // title string 
         public string Title => post.Title.Rendered;
 
         // gets a list of authors and joins them in a string
         public string Authors => String.Join(", ", postJson.custom_fields.writer);
+
+        // joins a list of job titles into a string
+        public string Titles => String.Join(", ", postJson.custom_fields.jobtitle);
+
+        public string AuthorsAndTitles => authorsTitlesFormatted();
 
         // DateTime object for the publication date
         public DateTime Date => postJson.date;
