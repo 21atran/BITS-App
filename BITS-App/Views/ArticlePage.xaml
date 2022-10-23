@@ -29,14 +29,10 @@
 
             </Grid>
 
-            <Label 
-                    Text=" "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="2"
-                    BackgroundColor="PaleGreen"/>
-            
+            <Rectangle
+                HeightRequest="2"
+                BackgroundColor="{DynamicResource Secondary}"/>
+
             <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="810" BackgroundColor="ForestGreen">
                 <Label 
                     Text=" "
