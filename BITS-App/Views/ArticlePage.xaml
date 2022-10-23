@@ -4,33 +4,30 @@
              x:Class="BITS_App.Views.ArticlePage">
     
     <ScrollView>
-        
-        <VerticalStackLayout  HorizontalOptions="Fill">
 
-            <Label 
-                    Text=" "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="12"
-                    BackgroundColor="ForestGreen"/>
-
-            <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="810" BackgroundColor="ForestGreen">
+        <VerticalStackLayout HorizontalOptions="StartAndExpand">
+            <Grid Padding="5" HorizontalOptions="Fill" BackgroundColor="{DynamicResource Primary}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
                 <Label 
-                    Text=" The Glen Bard"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center"
+                    Grid.Column="0"
+                    Text="The Glen Bard"
                     FontAttributes="Bold"
                     FontSize="Large"
-                    BackgroundColor="ForestGreen"/>
+                    VerticalTextAlignment="End"
+                    TextColor="{DynamicResource Secondary}"/>
 
                 <Label 
+                    Grid.Column="1"
                     Text="The Glenbard West Student Newspaper|Est.1927"
-                    VerticalOptions="EndAndExpand" 
-                    HorizontalOptions="Fill"
-                    BackgroundColor="ForestGreen"/>
+                    HeightRequest="40"
+                    HorizontalTextAlignment="End"
+                    VerticalTextAlignment="End"
+                    TextColor="{DynamicResource Secondary}"/>
 
-            </HorizontalStackLayout>
+            </Grid>
 
             <Label 
                     Text=" "
