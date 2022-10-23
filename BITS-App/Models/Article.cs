@@ -76,11 +76,13 @@ namespace BITS_App.Models
         // title string 
         public string Title => post.Title.Rendered;
 
-
-        //gets a list of authors and joins them in a string
+        // gets a list of authors and joins them in a string
         public string Authors => String.Join(", ", postJson.custom_fields.writer);
 
-        //a link for an image
+        // DateTime object for the publication date
+        public DateTime Date => postJson.date;
+
+        // a link for an image
         public string Image => medias[0].Link.ToString();
 
         // content string

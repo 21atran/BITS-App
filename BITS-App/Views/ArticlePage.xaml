@@ -41,10 +41,16 @@
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="Center"
                        FontSize="Title" />
-                
-                <Label Text="{Binding Authors, StringFormat='{0}, Role | August 12, 2022'}"
-                       HorizontalTextAlignment="Center"
-                       HorizontalOptions="Center" />
+
+                <Label HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center" >
+                    <Label.Text>
+                        <MultiBinding StringFormat="{}{0}, Role | {1:M}, {1:yyyy}" >
+                            <Binding Path="Authors" />
+                            <Binding Path="Date" />
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
 
                 <Image Source="{Binding FeaturedMediaPhoto}"
                        HorizontalOptions="Center" />
