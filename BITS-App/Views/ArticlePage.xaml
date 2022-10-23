@@ -5,10 +5,10 @@
     <ScrollView>
         <VerticalStackLayout>
             <VerticalStackLayout>
-                <Grid Padding="5" HorizontalOptions="Fill" BackgroundColor="{DynamicResource Primary}">
+                <Grid Padding="5" HorizontalOptions="Fill" ColumnSpacing="10" BackgroundColor="{DynamicResource Primary}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     
                     <Label Grid.Column="0"
