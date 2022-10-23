@@ -31,7 +31,8 @@
             <Label
                 Text="{Binding Content}"
                 FontSize="14"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"
+                TextType="Html" />
 
             <Button
                 x:Name="CounterBtn"
