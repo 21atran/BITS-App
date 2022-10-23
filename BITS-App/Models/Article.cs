@@ -86,9 +86,6 @@ namespace BITS_App.Models
         // content string
         public string Content => post.Content.Rendered;
 
-        // id of featured media
-        public int FeaturedMediaID => postJson.featured_media;
-
         // photo using MediaItem format
         public string FeaturedMediaPhoto => featured.Link.ToString();
     }
