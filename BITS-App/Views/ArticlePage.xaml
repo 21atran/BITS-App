@@ -33,24 +33,9 @@
                 HeightRequest="2"
                 BackgroundColor="{DynamicResource Secondary}"/>
 
-            <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="810" BackgroundColor="ForestGreen">
-                <Label 
-                    Text=" "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="5"
-                    BackgroundColor="ForestGreen"/>
-            </HorizontalStackLayout>
-
-
-            <Label 
-                    Text=" "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="5"
-                    BackgroundColor="ForestGreen"/>
+            <Rectangle
+                HeightRequest="10"
+                BackgroundColor="{DynamicResource Primary}"/>
 
             <Label 
                     Text=" "
