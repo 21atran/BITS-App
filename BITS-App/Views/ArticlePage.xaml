@@ -5,153 +5,150 @@
     
     <ScrollView>
 
-        <VerticalStackLayout HorizontalOptions="StartAndExpand">
-            <Grid Padding="5" HorizontalOptions="Fill" BackgroundColor="{DynamicResource Primary}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Label 
-                    Grid.Column="0"
-                    Text="The Glen Bard"
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    VerticalTextAlignment="End"
-                    TextColor="{DynamicResource Secondary}"/>
+        <VerticalStackLayout>
+            <VerticalStackLayout>
+                <Grid Padding="5" HorizontalOptions="Fill" BackgroundColor="{DynamicResource Primary}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label 
+                        Grid.Column="0"
+                        Text="The Glen Bard"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        VerticalTextAlignment="End"
+                        TextColor="{DynamicResource Secondary}"/>
+
+                    <Label 
+                        Grid.Column="1"
+                        Text="The Glenbard West Student Newspaper|Est.1927"
+                        HeightRequest="40"
+                        HorizontalTextAlignment="End"
+                        VerticalTextAlignment="End"
+                        TextColor="{DynamicResource Secondary}"/>
+                </Grid>
+
+                <Rectangle
+                    HeightRequest="2"
+                    BackgroundColor="{DynamicResource Secondary}"/>
+
+                <Rectangle
+                    HeightRequest="10"
+                    BackgroundColor="{DynamicResource Primary}"/>
+            </VerticalStackLayout>
+            
+            <VerticalStackLayout Padding="20">
+                <Label Text="The Baby Formula Shortage: An Overview of What Has Been Happening"
+                    FontAttributes="Bold" 
+                    HorizontalOptions="Center"
+                    FontSize="Title"/>
 
                 <Label 
-                    Grid.Column="1"
-                    Text="The Glenbard West Student Newspaper|Est.1927"
-                    HeightRequest="40"
-                    HorizontalTextAlignment="End"
-                    VerticalTextAlignment="End"
-                    TextColor="{DynamicResource Secondary}"/>
-
-            </Grid>
-
-            <Rectangle
-                HeightRequest="2"
-                BackgroundColor="{DynamicResource Secondary}"/>
-
-            <Rectangle
-                HeightRequest="10"
-                BackgroundColor="{DynamicResource Primary}"/>
-
-            <Label 
-                    Text=" "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="20"/>
-
-            <Label Text="The Baby Formula Shortage: An Overview of What Has Been Happening"
-                       FontAttributes="Bold" 
-                       HorizontalOptions="Center"
-                       FontSize="Title"/>
-
-            <Label 
                     Text=" "
                     VerticalOptions="Center" 
                     HorizontalOptions="Fill"
                     FontAttributes="Bold"
                     FontSize="15"/>
 
-            <Label Text="Amy Tran, Features Editor | August 12, 2022"
-                       HorizontalOptions="Center"/>
+                <Label Text="Amy Tran, Features Editor | August 12, 2022"
+                    HorizontalOptions="Center"/>
 
-            <Label 
+                <Label 
                     Text=" "
                     VerticalOptions="Center" 
                     HorizontalOptions="Fill"
                     FontAttributes="Bold"
                     FontSize="100"/>
 
-            <Label 
+                <Label 
                     Text="Insert Photo Here"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center"
                     FontAttributes="Bold"
                     FontSize="Medium"/>
 
-            <Label 
+                <Label 
                     Text=" "
                     VerticalOptions="Center" 
                     HorizontalOptions="Fill"
                     FontAttributes="Bold"
                     FontSize="100"/>
 
-            <Label 
-                    Text="As if parenting wasn't hard enough, families now find themselves traveling great lengths as the U.S. continues to face the now 6 months old baby formula shortage.  "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="StartAndExpand"
-                    FontSize="Default"/>
+                <VerticalStackLayout>
+                    <Label 
+                        Text="As if parenting wasn't hard enough, families now find themselves traveling great lengths as the U.S. continues to face the now 6 months old baby formula shortage.  "
+                        VerticalOptions="Center" 
+                        HorizontalOptions="StartAndExpand"
+                        FontSize="Default"/>
 
-            <Label 
+                    <Label 
+                        Text=" "
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Fill"
+                        FontAttributes="Bold"
+                        FontSize="15"/>
+
+                    <Label 
+                        Text="It all started with the 2021-2022 supply chain issues caused by the pandemic along with the war in Ukraine that resulted in some baby formula ingredients becoming scarce. The situation spiraled out of control from then on. In February of 2022, the Abbott Nutrition facility in Sturgis, Michigan was shut down and certain formulas were recalled due to a bacterial infection in their formulas that caused four hospitalizations, two of which ended in death. Considering that Abbott is one of the four major baby formula manufacturers, and making up 40% of the baby formula market, the plant shut-down has shown its drastic effects nationwide. "
+                        VerticalOptions="Center" 
+                        HorizontalOptions="StartAndExpand"
+                        FontSize="Default"/>
+
+                    <Label 
                     Text=" "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="15"/>
-            
-            <Label 
-                    Text="It all started with the 2021-2022 supply chain issues caused by the pandemic along with the war in Ukraine that resulted in some baby formula ingredients becoming scarce. The situation spiraled out of control from then on. In February of 2022, the Abbott Nutrition facility in Sturgis, Michigan was shut down and certain formulas were recalled due to a bacterial infection in their formulas that caused four hospitalizations, two of which ended in death. Considering that Abbott is one of the four major baby formula manufacturers, and making up 40% of the baby formula market, the plant shut-down has shown its drastic effects nationwide. "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="StartAndExpand"
-                    FontSize="Default"/>
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Fill"
+                        FontAttributes="Bold"
+                        FontSize="15"/>
 
-            <Label 
+                    <Label 
+                        Text="The shortage has taken a toll on many families across the U.S. Some infants with special dietary restrictions may need specific formulas whereas for others with allergies and intolerances, baby formula is their only choice. Additionally, while many may think the solution is to simply breastfeed their child, the reality is not always that easy. Certain mothers can not breastfeed their child—perhaps they are unable to produce healthy breast milk, or maybe they're undergoing medication that does not support breastfeeding. Some mothers may simply choose not to breastfeed. "
+                        VerticalOptions="Center" 
+                        HorizontalOptions="StartAndExpand"
+                        FontSize="Default"/>
+
+                    <Label 
+                        Text=" "
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Fill"
+                        FontAttributes="Bold"
+                        FontSize="15"/>
+
+                    <Label 
+                        Text="Since then, there have been several attempts to ease the shortage. In May of 2022, the FDA eased regulations on imports into the states in order to bring in foreign baby formulas, and President Joe Biden aided in the process by using the Defense Production Act which sped up authorization. The imports seem to have worked as, according to the New York Post, out-of-stock rates for all types of baby formulas were 30% the week ending July 24th, compared to 32% the week prior. However, despite this progress, the baby formula shortage is still far from over."
+                        VerticalOptions="Center" 
+                        HorizontalOptions="StartAndExpand"
+                        FontSize="Default"/>
+
+                    <Label 
                     Text=" "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="15"/>
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Fill"
+                        FontAttributes="Bold"
+                        FontSize="15"/>
 
-            <Label 
-                    Text="The shortage has taken a toll on many families across the U.S. Some infants with special dietary restrictions may need specific formulas whereas for others with allergies and intolerances, baby formula is their only choice. Additionally, while many may think the solution is to simply breastfeed their child, the reality is not always that easy. Certain mothers can not breastfeed their child—perhaps they are unable to produce healthy breast milk, or maybe they're undergoing medication that does not support breastfeeding. Some mothers may simply choose not to breastfeed. "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="StartAndExpand"
-                    FontSize="Default"/>
-
-            <Label 
-                    Text=" "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="15"/>
-
-            <Label 
-                    Text="Since then, there have been several attempts to ease the shortage. In May of 2022, the FDA eased regulations on imports into the states in order to bring in foreign baby formulas, and President Joe Biden aided in the process by using the Defense Production Act which sped up authorization. The imports seem to have worked as, according to the New York Post, out-of-stock rates for all types of baby formulas were 30% the week ending July 24th, compared to 32% the week prior. However, despite this progress, the baby formula shortage is still far from over."
-                    VerticalOptions="Center" 
-                    HorizontalOptions="StartAndExpand"
-                    FontSize="Default"/>
-
-            <Label 
-                    Text=" "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="15"/>
-
-            <Label 
+                    <Label 
                     Text="As First Lady Jill Biden said in her public service announcement on May 17th, 'becoming a mom or dad means falling in love deeper than you ever thought possible. And in those first few months of sleepless nights, of endless diapers and dirty dishes, and worrying about every little danger, your love can feel like the only thing that keeps you going.' For these reasons, it's on all of us to hope that things get better going into the second half of 2022. "
                     VerticalOptions="Center" 
                     HorizontalOptions="StartAndExpand"
                     FontSize="Default"/>
 
-            <Label 
-                    Text=" "
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="20"/>
+                    <Label 
+                        Text=" "
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Fill"
+                        FontAttributes="Bold"
+                        FontSize="20"/>
 
-            <Label 
-                    Text=""
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Fill"
-                    FontAttributes="Bold"
-                    FontSize="15"/>
-
+                    <Label 
+                        Text=""
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Fill"
+                        FontAttributes="Bold"
+                        FontSize="15"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
