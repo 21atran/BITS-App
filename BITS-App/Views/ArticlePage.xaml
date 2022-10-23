@@ -50,26 +50,11 @@
                        HorizontalOptions="Center" />
 
                 <VerticalStackLayout Padding="0,5,0,5" Spacing="15">
-                    <Label FontSize="14"
+                    <Label Text="{Binding Content, StringFormat='{0}'}"
+                           FontSize="14"
                            HorizontalOptions="Center"
                            TextType="Html"
                            LineBreakMode="WordWrap" >
-                        <Label.Text>
-                            <Binding Path="Content">
-                                <Binding.StringFormat>
-                                    <![CDATA[
-                                    test
-                                    <style>
-                                        p {
-                                            margin-top: 1em ;
-                                            margin-bottom: 1em ;
-                                        }
-                                    </style>
-                                    {0}
-                                    ]]>
-                                </Binding.StringFormat>
-                            </Binding>
-                        </Label.Text>
                     </Label>
                 </VerticalStackLayout>
             </VerticalStackLayout>
