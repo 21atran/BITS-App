@@ -13,9 +13,11 @@
                     
                     <Label Grid.Column="0"
                            Text="The Glen Bard"
+                           FontFamily="UnifrakturMaguntia"
                            FontAttributes="Bold"
-                           FontSize="Large"
-                           VerticalTextAlignment="End"
+                           FontSize="29"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center"
                            TextColor="{DynamicResource Secondary}" />
                     
                     <Label Grid.Column="1"

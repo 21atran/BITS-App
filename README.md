@@ -5,3 +5,4 @@ The BITS App is a mobile application for SNO publications written to be customiz
 This software is licensed under the Apache-2.0 license - see LICENSE.txt. Usage of this software constitutes agreement with the terms and conditions of this license as well as the licenses of the following dependencies:
 
 - WordPressPCL - see LICENSE-wordpresspcl.txt
+- Unifraktur Maguntia - see LICENSE-unifrakturmaguntia.txt
