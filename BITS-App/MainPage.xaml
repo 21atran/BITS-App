@@ -29,12 +29,6 @@
                 HorizontalOptions="Center" />
 
             <Label
-                Text="{Binding  FeaturedMediaID}"
-                FontSize="14"
-                HorizontalOptions="Center" />
-
-
-            <Label
                 Text="{Binding Content}"
                 FontSize="14"
                 HorizontalOptions="Center" />
