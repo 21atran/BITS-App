@@ -9,36 +9,13 @@ using WordPressPCL;
 namespace BITS_App.Models
 {
     internal class Article {
-        // JSON deserialization classes
-        protected class Post {
-            public int id { get; set; }
-            public DateTime date { get; set; }
-            public DateTimeOffset date_gmt { get; set; }
-            public Renderable title { get; set; }
-            public Renderable content { get; set; }
-            public CustomFields custom_fields { get; set; }
-
-            public int featured_media { get; set; }
-
-            public List<Dictionary<string, string>> attachment { get; set; }
-        }
-
-        protected class Renderable {
-            public string rendered { get; set; }
-        }
-
-        protected class CustomFields {
-            public string[] jobtitle { get; set; }
-            public string[] writer { get; set; }
-        }
-
         // fields
         protected WordPressClient client;
         protected WordPressPCL.Models.MediaItem featured;
         protected int id;
         protected WordPressPCL.Models.Post post;
         protected string raw;
-        protected Post postJson;
+        protected Json.Post postJson;
         protected List<WordPressPCL.Models.MediaItem> medias;
 
         // constructor
@@ -56,7 +33,7 @@ namespace BITS_App.Models
             post = task.Result;
 
             //returns the json backend of site
-            postJson = JsonConvert.DeserializeObject<Post>(raw);
+            postJson = JsonConvert.DeserializeObject<Json.Post>(raw);
 
             var pictasks = client.Media.GetByIDAsync(postJson.featured_media);
             pictasks.Wait();
@@ -74,12 +51,12 @@ namespace BITS_App.Models
         // helper methods
         private string authorsTitlesFormatted() {
             string formatted = "";
-            for (int i = 0; i < postJson.custom_fields.writer.Length; i++) {
+            for (int i = 0; i < postJson.custom_fields.writer.Count; i++) {
                 formatted += postJson.custom_fields.writer[i];
                 formatted += ", ";
                 formatted += postJson.custom_fields.jobtitle[i];
 
-                if (i < postJson.custom_fields.writer.Length - 1) {
+                if (i < postJson.custom_fields.writer.Count - 1) {
                     formatted += " - ";
                 }
             }
