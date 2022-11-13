@@ -59,7 +59,7 @@ namespace BITS_App.Models
         public async Task<object> RefreshAsync() {
             Uri uri = getUri(id);
             try {
-                HttpResponseMessage response = await App.client.GetAsync(uri);
+                HttpResponseMessage response = await App.client?.GetAsync(uri);
                 if (response.IsSuccessStatusCode) {
                     string content = await response.Content.ReadAsStringAsync();
                     postJson = JsonConvert.DeserializeObject<Json.Post>(content);
@@ -104,7 +104,7 @@ namespace BITS_App.Models
         public string AuthorsAndTitles => authorsTitlesFormatted();
 
         // DateTime object for the publication date
-        public DateTime Date => postJson.date;
+        public DateTime Date => (DateTime)(postJson?.date);
 
         // a link for an image
         public string Image => medias[0].Link.ToString();
