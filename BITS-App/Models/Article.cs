@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +10,7 @@ using WordPressPCL;
 
 namespace BITS_App.Models
 {
-    internal class Article {
+    internal class Article : RestModel, INotifyPropertyChanged {
         // fields
         protected WordPressClient client;
         protected WordPressPCL.Models.MediaItem featured;
@@ -18,22 +20,28 @@ namespace BITS_App.Models
         protected Json.Post postJson;
         protected List<WordPressPCL.Models.MediaItem> medias;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         // constructor
         public Article(int id) {
+            endpoint = "/wp/v2/posts/{0}";
+
             //creating a client, and taking the wordpress data, storing it into a client variable
             client = new WordPressClient("https://gwhsnews.org/wp-json/");
             this.id = id;
 
-            raw = "{}";
-            client.HttpResponsePreProcessing = (response) => raw = response;
+            /*var refreshTask = this.RefreshAsync();
+            refreshTask.Wait();*/
+            postJson = new Json.Post();
+            postJson.custom_fields = new Json.Post.CustomFields();
+            postJson.custom_fields.writer = new List<string>();
+            postJson.custom_fields.jobtitle = new List<string>();
+            postJson.featured_media = 7770;
 
             //gets Posts from website
             var task = client.Posts.GetByIDAsync(id);
             task.Wait();
             post = task.Result;
-
-            //returns the json backend of site
-            postJson = JsonConvert.DeserializeObject<Json.Post>(raw);
 
             var pictasks = client.Media.GetByIDAsync(postJson.featured_media);
             pictasks.Wait();
@@ -45,7 +53,26 @@ namespace BITS_App.Models
             pictask.Wait();
 
             //list of all the medias that are in website, gets a result
-            medias = (List<WordPressPCL.Models.MediaItem>)pictask.Result;
+            //medias = (List<WordPressPCL.Models.MediaItem>)pictask.Result;*
+        }
+
+        public async Task<object> RefreshAsync() {
+            Uri uri = getUri(id);
+            try {
+                HttpResponseMessage response = await App.client.GetAsync(uri);
+                if (response.IsSuccessStatusCode) {
+                    string content = await response.Content.ReadAsStringAsync();
+                    postJson = JsonConvert.DeserializeObject<Json.Post>(content);
+                }
+            } catch (Exception ex) {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Title"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AuthorsAndTitles"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Date"));
+
+            return null;
         }
 
         // helper methods
