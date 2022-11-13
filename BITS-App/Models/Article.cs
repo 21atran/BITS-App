@@ -93,7 +93,7 @@ namespace BITS_App.Models
 
         // Bindings
         // title string 
-        public string Title => post.Title.Rendered;
+        public string Title => postJson?.title?.rendered;
 
         // gets a list of authors and joins them in a string
         public string Authors => String.Join(", ", postJson.custom_fields.writer);
@@ -110,7 +110,7 @@ namespace BITS_App.Models
         public string Image => medias[0].Link.ToString();
 
         // content string
-        public string Content => post.Content.Rendered;
+        public string Content => postJson?.content?.rendered;
 
         // photo using MediaItem format
         public string FeaturedMediaPhoto => featured.Link.ToString();
