@@ -24,7 +24,7 @@ namespace BITS_App.Models
 
         // constructor
         public Article(int id) {
-            endpoint = "/wp/v2/posts/{0}";
+            endpoint = delegate() { return "/wp/v2/posts/{0}"; };
 
             //creating a client, and taking the wordpress data, storing it into a client variable
             client = new WordPressClient("https://gwhsnews.org/wp-json/");
