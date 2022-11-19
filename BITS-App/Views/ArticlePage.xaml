@@ -36,7 +36,7 @@
             </VerticalStackLayout>
             
             <VerticalStackLayout Padding="20" Spacing="15">
-                <Label Text="{Binding Title}"
+                <Label Text="{Binding Path=Title, FallbackValue='Title', TargetNullValue='null'}"
                        FontAttributes="Bold"
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="Center"
@@ -46,17 +46,17 @@
                        HorizontalOptions="Center" >
                     <Label.Text>
                         <MultiBinding StringFormat="{}{0} | {1:M}, {1:yyyy}" >
-                            <Binding Path="AuthorsAndTitles" />
+                            <Binding Path="AuthorsAndTitles" FallbackValue='AuthorsAndTitles' TargetNullValue='null'/>
                             <Binding Path="Date" />
                         </MultiBinding>
                     </Label.Text>
                 </Label>
 
-                <Image Source="{Binding FeaturedMediaPhoto}"
+                <Image Source="{Binding FeaturedMediaPhoto, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
                        HorizontalOptions="Center" />
 
                 <VerticalStackLayout Padding="0,5,0,5" Spacing="15">
-                    <Label Text="{Binding Content, StringFormat='{0}'}"
+                    <Label Text="{Binding Content, StringFormat='{0}', FallbackValue='content', TargetNullValue='null'}"
                            FontSize="14"
                            HorizontalOptions="Center"
                            TextType="Html"

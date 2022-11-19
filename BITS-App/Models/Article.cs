@@ -32,25 +32,15 @@ namespace BITS_App.Models
 
             /*var refreshTask = this.RefreshAsync();
             refreshTask.Wait();*/
-            postJson = new Json.Post();
-            postJson.custom_fields = new Json.Post.CustomFields();
-            postJson.custom_fields.writer = new List<string>();
-            postJson.custom_fields.jobtitle = new List<string>();
-            postJson.featured_media = 7770;
 
-            //gets Posts from website
-            var task = client.Posts.GetByIDAsync(id);
-            task.Wait();
-            post = task.Result;
-
-            var pictasks = client.Media.GetByIDAsync(postJson.featured_media);
+            /*var pictasks = client.Media.GetByIDAsync(postJson.featured_media);
             pictasks.Wait();
             featured = pictasks.Result;
 
 
             //list of all the media
             var pictask = client.Media.GetAllAsync();
-            pictask.Wait();
+            pictask.Wait();*/
 
             //list of all the medias that are in website, gets a result
             //medias = (List<WordPressPCL.Models.MediaItem>)pictask.Result;*
@@ -79,14 +69,19 @@ namespace BITS_App.Models
         // helper methods
         private string authorsTitlesFormatted() {
             string formatted = "";
-            for (int i = 0; i < postJson.custom_fields.writer.Count; i++) {
-                formatted += postJson.custom_fields.writer[i];
-                formatted += ", ";
-                formatted += postJson.custom_fields.jobtitle[i];
 
-                if (i < postJson.custom_fields.writer.Count - 1) {
-                    formatted += " - ";
+            try {
+                for (int i = 0; i < postJson?.custom_fields?.writer?.Count; i++) {
+                    formatted += postJson.custom_fields.writer[i];
+                    formatted += ", ";
+                    formatted += postJson.custom_fields.jobtitle[i];
+
+                    if (i < postJson.custom_fields.writer.Count - 1) {
+                        formatted += " - ";
+                    }
                 }
+            } catch (NullReferenceException ignored) {
+                return null;
             }
             
             return formatted;
@@ -105,7 +100,7 @@ namespace BITS_App.Models
         public string AuthorsAndTitles => authorsTitlesFormatted();
 
         // DateTime object for the publication date
-        public DateTime Date => (DateTime)(postJson?.date);
+        public DateTime Date => postJson?.date!=null ? postJson.date : DateTime.UnixEpoch;
 
         // a link for an image
         public string Image => medias[0].Link.ToString();
@@ -114,6 +109,6 @@ namespace BITS_App.Models
         public string Content => postJson?.content?.rendered;
 
         // photo using MediaItem format
-        public string FeaturedMediaPhoto => featured.Link.ToString();
+        public string FeaturedMediaPhoto => null /*featured.Link.ToString()*/;
     }
 }
