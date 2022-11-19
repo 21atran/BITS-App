@@ -55,14 +55,7 @@
                 <Image Source="{Binding FeaturedMediaPhoto}"
                        HorizontalOptions="Center" />
 
-                <VerticalStackLayout Padding="0,5,0,5" Spacing="15">
-                    <Label Text="{Binding Content, StringFormat='{0}'}"
-                           FontSize="14"
-                           HorizontalOptions="Center"
-                           TextType="Html"
-                           LineBreakMode="WordWrap" >
-                    </Label>
-                </VerticalStackLayout>
+                <VerticalStackLayout x:Name="mainText" Padding="0,5,0,5" Spacing="15"/>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
