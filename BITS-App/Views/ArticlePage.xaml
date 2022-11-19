@@ -63,14 +63,6 @@
                            LineBreakMode="WordWrap" >
                     </Label>
                 </VerticalStackLayout>
-                <VerticalStackLayout Padding="0,5,0,5" Spacing="15">
-                    <Label Text="{Binding ParaTest}"
-                           FontSize="14"
-                           HorizontalOptions="Center"
-                           TextType="Html"
-                           LineBreakMode="WordWrap" >
-                    </Label>
-                </VerticalStackLayout>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
