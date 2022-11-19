@@ -24,7 +24,7 @@ namespace BITS_App.Models
 
         // constructor
         public Article(int id) {
-            endpoint = delegate() { return "/wp/v2/posts/{0}"; };
+            endpoint = delegate { return "/wp/v2/posts/{0}"; };
 
             //creating a client, and taking the wordpress data, storing it into a client variable
             client = new WordPressClient("https://gwhsnews.org/wp-json/");
@@ -59,7 +59,7 @@ namespace BITS_App.Models
         public async Task<object> RefreshAsync() {
             Uri uri = getUri(id);
             try {
-                HttpResponseMessage response = await App.client?.GetAsync(uri);
+                HttpResponseMessage response = await App.client.GetAsync(uri);
                 if (response.IsSuccessStatusCode) {
                     string content = await response.Content.ReadAsStringAsync();
                     postJson = JsonConvert.DeserializeObject<Json.Post>(content);
@@ -71,6 +71,7 @@ namespace BITS_App.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Title"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AuthorsAndTitles"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Date"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Content"));
 
             return null;
         }
