@@ -1,5 +1,4 @@
-﻿using HtmlAgilityPack;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +40,6 @@ namespace BITS_App.Models
         protected string raw;
         protected Post postJson;
         protected List<WordPressPCL.Models.MediaItem> medias;
-        List<string> paras;
 
         // constructor
         public Article(int id) {
@@ -71,16 +69,6 @@ namespace BITS_App.Models
 
             //list of all the medias that are in website, gets a result
             medias = (List<WordPressPCL.Models.MediaItem>)pictask.Result;
-
-            var html = @"https://gwhsnews.org/7767/";
-            HtmlWeb web = new HtmlWeb();
-            var htmlDoc = web.Load(html);
-            var parNodes = htmlDoc.DocumentNode.SelectNodes("/html/body/div[1]/div[4]/div/div/div[1]/div/div/div/div[1]/div[1]/span/p");
-            paras = new List<string>();
-            foreach (var node in parNodes)
-            {
-                paras.Add(node.InnerText);
-            }
         }
 
         // helper methods
@@ -122,7 +110,5 @@ namespace BITS_App.Models
 
         // photo using MediaItem format
         public string FeaturedMediaPhoto => featured.Link.ToString();
-
-        public string ParaTest => paras[0];
     }
 }
