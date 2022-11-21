@@ -55,7 +55,7 @@
                 <Image Source="{Binding FeaturedMediaPhoto}"
                        HorizontalOptions="Center" />
 
-                <VerticalStackLayout x:Name="mainText" Padding="0,5,0,5" Spacing="15"/>
+                <StackLayout x:Name="mainText"></StackLayout>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
