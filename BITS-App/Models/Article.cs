@@ -13,7 +13,7 @@ namespace BITS_App.Models
     internal class Article : RestModel, INotifyPropertyChanged {
         // fields
         protected WordPressClient client;
-        protected WordPressPCL.Models.MediaItem featured;
+        protected Media featuredMedia;
         protected int id;
         protected WordPressPCL.Models.Post post;
         protected string raw;
@@ -63,7 +63,19 @@ namespace BITS_App.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Date"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Content"));
 
+            featuredMedia = new Media(postJson.featured_media);
+            featuredMedia.PropertyChanged += OnPropertyChanged;
+            await featuredMedia.RefreshAsync();
+
             return null;
+        }
+
+        public void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
+            switch (e.PropertyName) {
+                case "Link":
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FeaturedMedia"));
+                    break;
+            }
         }
 
         // helper methods
@@ -110,5 +122,7 @@ namespace BITS_App.Models
 
         // photo using MediaItem format
         public string FeaturedMediaPhoto => null /*featured.Link.ToString()*/;
+
+        public string FeaturedMedia => featuredMedia?.Link;
     }
 }
