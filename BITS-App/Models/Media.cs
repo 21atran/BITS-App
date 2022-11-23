@@ -8,25 +8,19 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BITS_App.Models
-{
-    internal class Media: RestModel, INotifyPropertyChanged
-    {
-        // fields
-        protected int id;
-        protected Json.Media mediaJson;
-
+namespace BITS_App.Models {
+    internal class Media: RestModel, INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // fields
+        protected Json.Media mediaJson;
+
+
         // constructor
-        public Media(int id) {
-            endpoint = delegate { return "/wp/v2/media/{0}"; };
+        public Media(int id) : base($"/wp/v2/media/{id}") { }
 
-            this.id = id;
-        }
-
-        public async Task<object> RefreshAsync() {
-            Uri uri = getUri(id);
+        public async Task RefreshAsync() {
+            Uri uri = getUri();
             try {
                 HttpResponseMessage response = await App.client.GetAsync(uri);
                 if (response.IsSuccessStatusCode) {
@@ -38,8 +32,6 @@ namespace BITS_App.Models
             }
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Link"));
-
-            return null;
         }
 
         public string Link => mediaJson.link;
