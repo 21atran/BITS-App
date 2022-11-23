@@ -46,7 +46,8 @@
                        HorizontalOptions="Center" >
                     <Label.Text>
                         <MultiBinding StringFormat="{}{0} | {1:M}, {1:yyyy}" >
-                            <Binding Path="AuthorsAndTitles" FallbackValue='AuthorsAndTitles' TargetNullValue='null'/>
+                            <!-- TODO: This next binding right here really needs to be a converter composed of the Author and JobTitle bindings. -->
+                            <Binding Path="AuthorsAndJobTitlesFormatted" FallbackValue='AuthorsAndTitles' TargetNullValue='null'/>
                             <Binding Path="Date" />
                         </MultiBinding>
                     </Label.Text>

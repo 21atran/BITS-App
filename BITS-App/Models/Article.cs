@@ -49,27 +49,6 @@ namespace BITS_App.Models {
             }
         }
 
-        // helper methods
-        private string authorsTitlesFormatted() {
-            string formatted = "";
-
-            try {
-                for (int i = 0; i < postJson?.custom_fields?.writer?.Count; i++) {
-                    formatted += postJson.custom_fields.writer[i];
-                    formatted += ", ";
-                    formatted += postJson.custom_fields.jobtitle[i];
-
-                    if (i < postJson.custom_fields.writer.Count - 1) {
-                        formatted += " - ";
-                    }
-                }
-            } catch (NullReferenceException) {
-                return null;
-            }
-
-            return formatted;
-        }
-
         // Bindings
         // title string 
         public string? Title => postJson?.title?.rendered;
@@ -80,7 +59,7 @@ namespace BITS_App.Models {
         // joins a list of job titles into a string
         public List<string>? JobTitles => postJson?.custom_fields?.jobtitle;
 
-        public string? AuthorsAndTitles { get
+        public string? AuthorsAndJobTitlesFormatted { get
             {
                 string formatted = "";
 
