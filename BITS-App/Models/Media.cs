@@ -1,25 +1,27 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BITS_App.Models {
+    /// <summary>
+    /// Model representing a single media entry.
+    /// </summary>
     internal class Media : RestBase, INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // fields
+        // FIELDS
         protected Json.Media mediaJson;
 
-        // constructor
+        // CONSTRUCTOR
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Media">Media</see> class with the specified ID.
+        /// </summary>
+        /// <param name="id">ID number of the post</param>
         public Media(int id) : base($"/wp/v2/media/{id}") { }
 
+        // METHODS
         public override async Task RefreshAsync() {
-            Uri uri = getUri();
+            Uri uri = GetUri();
             try {
                 HttpResponseMessage response = await App.client.GetAsync(uri);
                 if (response.IsSuccessStatusCode) {
@@ -33,6 +35,9 @@ namespace BITS_App.Models {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Link"));
         }
 
+        // BINDINGS
+#nullable enable
         public string Link => mediaJson.link;
+#nullable disable
     }
 }

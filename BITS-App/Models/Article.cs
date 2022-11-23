@@ -1,26 +1,31 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WordPressPCL;
 
 namespace BITS_App.Models {
+    /// <summary>
+    /// Model representing a single post entry.
+    /// </summary>
     internal class Article : RestBase, INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // fields
+        // FIELDS
         protected Json.Post postJson;
         protected Media featuredMedia;
 
-        // constructor
+        // CONSTRUCTOR
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Article">Article</see> class with the specified ID.
+        /// </summary>
+        /// <param name="id">ID number of the post</param>
         public Article(int id) : base($"/wp/v2/posts/{id}") { }
 
+        // METHODS
         public override async Task RefreshAsync() {
-            Uri uri = getUri();
+            // gets URI for server counterpart to model
+            Uri uri = GetUri();
+
+            // attempts to make an HTTP GET request and deserialize it for easy access
             try {
                 HttpResponseMessage response = await App.client.GetAsync(uri);
                 if (response.IsSuccessStatusCode) {
@@ -31,36 +36,39 @@ namespace BITS_App.Models {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
 
+            // tells the UI that several bindings have been updated and should be refreshed
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Title"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AuthorsAndTitles"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Authors"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("JobTitles"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AuthorsAndJobTitlesFormatted"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Date"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Content"));
 
+            // generates a Media model for the Featured Media and registers to updates like a binding would - this is supposed to be directly bound to the view, but MAUI doesn't support that as of this writing, so we use a workaround
             featuredMedia = new Media(postJson.featured_media);
             featuredMedia.PropertyChanged += OnPropertyChanged;
+
+            // refreshes the Media model
             await featuredMedia.RefreshAsync();
         }
 
-        public void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
             switch (e.PropertyName) {
+                // if the Featured Media model has a change of link, it cascades to this model's FeaturedMedia binding, which will in turn cascade up to the UI
                 case "Link":
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FeaturedMedia"));
                     break;
             }
         }
 
-        // Bindings
-        // title string 
+        // BINDINGS
+#nullable enable
         public string? Title => postJson?.title?.rendered;
-
-        // gets a list of authors and joins them in a string
         public List<string>? Authors => postJson?.custom_fields?.writer;
-
-        // joins a list of job titles into a string
         public List<string>? JobTitles => postJson?.custom_fields?.jobtitle;
-
         public string? AuthorsAndJobTitlesFormatted { get
             {
+                // TODO: Swap this entire binding out for a proper converter.
                 string formatted = "";
 
                 try {
@@ -80,13 +88,9 @@ namespace BITS_App.Models {
                 return formatted;
             } 
         }
-
-        // DateTime object for the publication date
         public DateTime? Date => postJson?.date;
-
-        // content string
         public string? Content => postJson?.content?.rendered;
-
         public string? FeaturedMedia => featuredMedia?.Link;
+#nullable disable
     }
 }
