@@ -6,8 +6,8 @@ namespace BITS_App.Models {
     /// <summary>
     /// Model representing a single post entry.
     /// </summary>
-    internal class Article : RestBase, INotifyPropertyChanged {
-        public event PropertyChangedEventHandler PropertyChanged;
+    internal class Article : RestBase {
+        public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS
         protected Json.Post postJson;

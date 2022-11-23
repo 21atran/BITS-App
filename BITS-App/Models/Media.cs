@@ -6,8 +6,8 @@ namespace BITS_App.Models {
     /// <summary>
     /// Model representing a single media entry.
     /// </summary>
-    internal class Media : RestBase, INotifyPropertyChanged {
-        public event PropertyChangedEventHandler PropertyChanged;
+    internal class Media : RestBase {
+        public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS
         protected Json.Media mediaJson;
