@@ -81,7 +81,7 @@ namespace BITS_App.Models {
                             formatted += " - ";
                         }
                     }
-                } catch (NullReferenceException ignored) {
+                } catch (NullReferenceException) {
                     return null;
                 }
 
