@@ -16,11 +16,11 @@ namespace BITS_App.Models {
         public virtual async Task RefreshAsync() { }
 
         protected Uri getUri() {
-            return new Uri("http://" + REST_URL + String.Format(endpoint));
+            return new Uri("https://" + REST_URL + String.Format(endpoint));
         }
 
         protected Uri getUri(object? args) {
-            return new Uri("http://" + REST_URL + String.Format(endpoint, args));
+            return new Uri("https://" + REST_URL + String.Format(endpoint, args));
         }
     }
 }
