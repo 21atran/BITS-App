@@ -9,17 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BITS_App.Models {
-    internal class Media: RestModel, INotifyPropertyChanged {
+    internal class Media : RestBase, INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
         // fields
         protected Json.Media mediaJson;
 
-
         // constructor
         public Media(int id) : base($"/wp/v2/media/{id}") { }
 
-        public async Task RefreshAsync() {
+        public override async Task RefreshAsync() {
             Uri uri = getUri();
             try {
                 HttpResponseMessage response = await App.client.GetAsync(uri);

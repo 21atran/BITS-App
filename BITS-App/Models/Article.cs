@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using WordPressPCL;
 
 namespace BITS_App.Models {
-    internal class Article : RestModel, INotifyPropertyChanged {
+    internal class Article : RestBase, INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
         // fields
@@ -19,7 +19,7 @@ namespace BITS_App.Models {
         // constructor
         public Article(int id) : base($"/wp/v2/posts/{id}") { }
 
-        public async Task RefreshAsync() {
+        public override async Task RefreshAsync() {
             Uri uri = getUri();
             try {
                 HttpResponseMessage response = await App.client.GetAsync(uri);
