@@ -10,7 +10,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <Label Grid.Column="0"
                            Text="The Glen Bard"
                            FontFamily="UnifrakturMaguntia"
@@ -19,7 +19,7 @@
                            HorizontalTextAlignment="Start"
                            VerticalTextAlignment="Center"
                            TextColor="{DynamicResource Secondary}" />
-                    
+
                     <Label Grid.Column="1"
                            Text="The Glenbard West Student Newspaper|Est.1927"
                            HeightRequest="40"
@@ -27,14 +27,14 @@
                            VerticalTextAlignment="End"
                            TextColor="{DynamicResource Secondary}" />
                 </Grid>
-                
+
                 <Rectangle HeightRequest="2"
                            BackgroundColor="{DynamicResource Secondary}" />
 
                 <Rectangle HeightRequest="10"
                            BackgroundColor="{DynamicResource Primary}" />
             </VerticalStackLayout>
-            
+
             <VerticalStackLayout Padding="20" Spacing="15">
                 <Label Text="{Binding Title}"
                        FontAttributes="Bold"
@@ -55,7 +55,7 @@
                 <Image Source="{Binding FeaturedMediaPhoto}"
                        HorizontalOptions="Center" />
 
-                <StackLayout x:Name="mainText"></StackLayout>
+                <StackLayout x:Name="contentStackLayout"></StackLayout>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
