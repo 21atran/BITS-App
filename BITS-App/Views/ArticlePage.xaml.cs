@@ -9,7 +9,8 @@ public partial class ArticlePage : ContentPage
         InitializeComponent();
 
         BindingContext = new Models.Article(7767);
-
+        
+		    Dispatcher.Dispatch(async () => await ((Models.Article) BindingContext).RefreshAsync());
         Dispatcher.Dispatch(async () => await LoadContentAsync());
     }
 

@@ -36,7 +36,7 @@
             </VerticalStackLayout>
 
             <VerticalStackLayout Padding="20" Spacing="15">
-                <Label Text="{Binding Title}"
+                <Label Text="{Binding Path=Title, FallbackValue='Title', TargetNullValue='null'}"
                        FontAttributes="Bold"
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="Center"
@@ -46,15 +46,18 @@
                        HorizontalOptions="Center" >
                     <Label.Text>
                         <MultiBinding StringFormat="{}{0} | {1:M}, {1:yyyy}" >
-                            <Binding Path="AuthorsAndTitles" />
+                            <!-- TODO: This next binding right here really needs to be a converter composed of the Author and JobTitle bindings. -->
+                            <Binding Path="AuthorsAndJobTitlesFormatted" FallbackValue='AuthorsAndTitles' TargetNullValue='null'/>
                             <Binding Path="Date" />
                         </MultiBinding>
                     </Label.Text>
                 </Label>
-
-                <Image Source="{Binding FeaturedMediaPhoto}"
+                
+                <!-- TODO: Await MAUI update which adds C# binding updates for Image.Source. I would prefer to do it that way. This is a workaround I came up with for now. -->
+                <Image Source="{Binding Path=FeaturedMedia, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
                        HorizontalOptions="Center" />
-
+                
+                <!-- to be populated by LoadContentAsync -->
                 <StackLayout x:Name="contentStackLayout"></StackLayout>
             </VerticalStackLayout>
         </VerticalStackLayout>

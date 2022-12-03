@@ -1,114 +1,96 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WordPressPCL;
+using System.ComponentModel;
+using System.Diagnostics;
 
-namespace BITS_App.Models
-{
-    internal class Article {
-        // JSON deserialization classes
-        protected class Post {
-            public int id { get; set; }
-            public DateTime date { get; set; }
-            public DateTimeOffset date_gmt { get; set; }
-            public Renderable title { get; set; }
-            public Renderable content { get; set; }
-            public CustomFields custom_fields { get; set; }
+namespace BITS_App.Models {
+    /// <summary>
+    /// Model representing a single post entry.
+    /// </summary>
+    internal class Article : RestBase {
+        public override event PropertyChangedEventHandler PropertyChanged;
 
-            public int featured_media { get; set; }
+        // FIELDS
+        protected Json.Post postJson;
+        protected Media featuredMedia;
 
-            public List<Dictionary<string, string>> attachment { get; set; }
-        }
+        // CONSTRUCTOR
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Article">Article</see> class with the specified ID.
+        /// </summary>
+        /// <param name="id">ID number of the post</param>
+        public Article(int id) : base($"/wp/v2/posts/{id}") { }
 
-        protected class Renderable {
-            public string rendered { get; set; }
-        }
+        // METHODS
+        public override async Task RefreshAsync() {
+            // gets URI for server counterpart to model
+            Uri uri = GetUri();
 
-        protected class CustomFields {
-            public string[] jobtitle { get; set; }
-            public string[] writer { get; set; }
-        }
-
-        // fields
-        protected WordPressClient client;
-        protected WordPressPCL.Models.MediaItem featured;
-        protected int id;
-        protected WordPressPCL.Models.Post post;
-        protected string raw;
-        protected Post postJson;
-        protected List<WordPressPCL.Models.MediaItem> medias;
-
-        // constructor
-        public Article(int id) {
-            //creating a client, and taking the wordpress data, storing it into a client variable
-            client = new WordPressClient("https://gwhsnews.org/wp-json/");
-            this.id = id;
-
-            raw = "{}";
-            client.HttpResponsePreProcessing = (response) => raw = response;
-
-            //gets Posts from website
-            var task = client.Posts.GetByIDAsync(id);
-            task.Wait();
-            post = task.Result;
-
-            //returns the json backend of site
-            postJson = JsonConvert.DeserializeObject<Post>(raw);
-
-            var pictasks = client.Media.GetByIDAsync(postJson.featured_media);
-            pictasks.Wait();
-            featured = pictasks.Result;
-
-
-            //list of all the media
-            var pictask = client.Media.GetAllAsync();
-            pictask.Wait();
-
-            //list of all the medias that are in website, gets a result
-            medias = (List<WordPressPCL.Models.MediaItem>)pictask.Result;
-        }
-
-        // helper methods
-        private string authorsTitlesFormatted() {
-            string formatted = "";
-            for (int i = 0; i < postJson.custom_fields.writer.Length; i++) {
-                formatted += postJson.custom_fields.writer[i];
-                formatted += ", ";
-                formatted += postJson.custom_fields.jobtitle[i];
-
-                if (i < postJson.custom_fields.writer.Length - 1) {
-                    formatted += " - ";
+            // attempts to make an HTTP GET request and deserialize it for easy access
+            try {
+                HttpResponseMessage response = await App.client.GetAsync(uri);
+                if (response.IsSuccessStatusCode) {
+                    string content = await response.Content.ReadAsStringAsync();
+                    postJson = JsonConvert.DeserializeObject<Json.Post>(content);
                 }
+            } catch (Exception ex) {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
-            
-            return formatted;
+
+            // tells the UI that several bindings have been updated and should be refreshed
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Title"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Authors"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("JobTitles"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AuthorsAndJobTitlesFormatted"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Date"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Content"));
+
+            // generates a Media model for the Featured Media and registers to updates like a binding would - this is supposed to be directly bound to the view, but MAUI doesn't support that as of this writing, so we use a workaround
+            featuredMedia = new Media(postJson.featured_media);
+            featuredMedia.PropertyChanged += OnPropertyChanged;
+
+            // refreshes the Media model
+            await featuredMedia.RefreshAsync();
         }
 
-        // Bindings
-        // title string 
-        public string Title => post.Title.Rendered;
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
+            switch (e.PropertyName) {
+                // if the Featured Media model has a change of link, it cascades to this model's FeaturedMedia binding, which will in turn cascade up to the UI
+                case "Link":
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FeaturedMedia"));
+                    break;
+            }
+        }
 
-        // gets a list of authors and joins them in a string
-        public string Authors => String.Join(", ", postJson.custom_fields.writer);
+        // BINDINGS
+#nullable enable
+        public string? Title => postJson?.title?.rendered;
+        public List<string>? Authors => postJson?.custom_fields?.writer;
+        public List<string>? JobTitles => postJson?.custom_fields?.jobtitle;
+        public string? AuthorsAndJobTitlesFormatted { get
+            {
+                // TODO: Swap this entire binding out for a proper converter.
+                string formatted = "";
 
-        // joins a list of job titles into a string
-        public string Titles => String.Join(", ", postJson.custom_fields.jobtitle);
+                try {
+                    for (int i = 0; i < postJson?.custom_fields?.writer?.Count; i++) {
+                        formatted += postJson.custom_fields.writer[i];
+                        formatted += ", ";
+                        formatted += postJson.custom_fields.jobtitle[i];
 
-        public string AuthorsAndTitles => authorsTitlesFormatted();
+                        if (i < postJson.custom_fields.writer.Count - 1) {
+                            formatted += " - ";
+                        }
+                    }
+                } catch (NullReferenceException) {
+                    return null;
+                }
 
-        // DateTime object for the publication date
-        public DateTime Date => postJson.date;
-
-        // a link for an image
-        public string Image => medias[0].Link.ToString();
-
-        // content string
-        public string Content => post.Content.Rendered;
-
-        // photo using MediaItem format
-        public string FeaturedMediaPhoto => featured.Link.ToString();
+                return formatted;
+            } 
+        }
+        public DateTime? Date => postJson?.date;
+        public string? Content => postJson?.content?.rendered;
+        public string? FeaturedMedia => featuredMedia?.Link;
+#nullable disable
     }
 }
