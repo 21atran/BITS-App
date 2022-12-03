@@ -10,7 +10,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <Label Grid.Column="0"
                            Text="The Glen Bard"
                            FontFamily="UnifrakturMaguntia"
@@ -19,7 +19,7 @@
                            HorizontalTextAlignment="Start"
                            VerticalTextAlignment="Center"
                            TextColor="{DynamicResource Secondary}" />
-                    
+
                     <Label Grid.Column="1"
                            Text="The Glenbard West Student Newspaper|Est.1927"
                            HeightRequest="40"
@@ -27,14 +27,14 @@
                            VerticalTextAlignment="End"
                            TextColor="{DynamicResource Secondary}" />
                 </Grid>
-                
+
                 <Rectangle HeightRequest="2"
                            BackgroundColor="{DynamicResource Secondary}" />
 
                 <Rectangle HeightRequest="10"
                            BackgroundColor="{DynamicResource Primary}" />
             </VerticalStackLayout>
-            
+
             <VerticalStackLayout Padding="20" Spacing="15">
                 <Label Text="{Binding Path=Title, FallbackValue='Title', TargetNullValue='null'}"
                        FontAttributes="Bold"
@@ -56,15 +56,9 @@
                 <!-- TODO: Await MAUI update which adds C# binding updates for Image.Source. I would prefer to do it that way. This is a workaround I came up with for now. -->
                 <Image Source="{Binding Path=FeaturedMedia, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
                        HorizontalOptions="Center" />
-
-                <VerticalStackLayout Padding="0,5,0,5" Spacing="15">
-                    <Label Text="{Binding Content, StringFormat='{0}', FallbackValue='content', TargetNullValue='null'}"
-                           FontSize="14"
-                           HorizontalOptions="Center"
-                           TextType="Html"
-                           LineBreakMode="WordWrap" >
-                    </Label>
-                </VerticalStackLayout>
+                
+                <!-- to be populated by LoadContentAsync -->
+                <StackLayout x:Name="contentStackLayout"></StackLayout>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
