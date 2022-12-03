@@ -25,14 +25,8 @@ namespace BITS_App.Models {
         /// <summary>
         /// Generates a URI dynamically based on the endpoint.
         /// </summary>
-        /// <returns>A URI for the server counterpart of the model.</returns>
-        protected Uri GetUri() => new Uri("https://" + REST_URL + endpoint);
-
-        /// <summary>
-        /// Generates a URI dynamically based on the endpoint.
-        /// </summary>
         /// <param name="args">Formatting arguments if placeholders were in endpoint</param>
         /// <returns>A URI for the server counterpart of the model.</returns>
-        protected Uri GetUri(object?[] args) => new Uri("https://" + REST_URL + String.Format(endpoint, args));
+        protected Uri GetUri(params object[] args) => new Uri("https://" + REST_URL + String.Format(endpoint, args));
     }
 }
