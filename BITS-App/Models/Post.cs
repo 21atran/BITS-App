@@ -6,7 +6,7 @@ namespace BITS_App.Models {
     /// <summary>
     /// Model representing a single post entry.
     /// </summary>
-    internal class Article : RestBase {
+    internal class Post : RestBase {
         public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS
@@ -15,10 +15,10 @@ namespace BITS_App.Models {
 
         // CONSTRUCTOR
         /// <summary>
-        /// Initializes a new instance of the <see cref="Article">Article</see> class with the specified ID.
+        /// Initializes a new instance of the <see cref="Post">Post</see> class with the specified ID.
         /// </summary>
         /// <param name="id">ID number of the post</param>
-        public Article(int id) : base($"/wp/v2/posts/{id}") { }
+        public Post(int id) : base($"/wp/v2/posts/{id}") { }
 
         // METHODS
         public override async Task RefreshAsync() {

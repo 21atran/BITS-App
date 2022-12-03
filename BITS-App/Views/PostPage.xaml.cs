@@ -3,22 +3,22 @@ using System.ComponentModel;
 
 namespace BITS_App.Views;
 
-public partial class ArticlePage : ContentPage {
-    public ArticlePage() {
+public partial class PostPage : ContentPage {
+    public PostPage() {
         InitializeComponent();
 
-        BindingContext = new Models.Article(7767);
-        ((Models.Article)BindingContext).PropertyChanged += OnPropertyChanged;
+        BindingContext = new Models.Post(7767);
+        ((Models.Post)BindingContext).PropertyChanged += OnPropertyChanged;
 
-        Dispatcher.Dispatch(async () => await ((Models.Article)BindingContext).RefreshAsync());
+        Dispatcher.Dispatch(async () => await ((Models.Post)BindingContext).RefreshAsync());
     }
 
     /// <summary>
-    /// Loads content to XAML from HTML Content binding of <see cref="Models.Article">Models.Article</see>
+    /// Loads content to XAML from HTML Content binding of <see cref="Models.Post">Models.Post</see>
     /// </summary>
     public async Task LoadContentAsync() {
         // gets html in string format
-        string html = ((Models.Article)BindingContext).Content ?? "";
+        string html = ((Models.Post)BindingContext).Content ?? "";
 
         // uses agility pack and creates doc with string
         HtmlDocument htmlDoc = new HtmlDocument();
