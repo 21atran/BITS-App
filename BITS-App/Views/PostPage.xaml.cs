@@ -34,7 +34,8 @@ public partial class PostPage : ContentPage {
             if (node.Name == "p") {
                 Label label = new Label() {
                     Text = node.InnerText,
-                    FontSize = 14
+                    FontSize = 14,
+                    Padding = 5,
                     // can format here
                 };
 
@@ -51,7 +52,7 @@ public partial class PostPage : ContentPage {
                 };
 
                 Label label = new Label() {
-                    Padding = 10,
+                    Padding = 15,
                     Text = node.SelectSingleNode("//figcaption").InnerText,
                     FontSize = 10.5,
                     BackgroundColor = Colors.Transparent
