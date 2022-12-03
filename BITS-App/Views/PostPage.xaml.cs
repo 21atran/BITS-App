@@ -41,8 +41,6 @@ public partial class PostPage : ContentPage {
                 // adds the paragraph to document
                 contentStackLayout.Add(label);
 
-            } else if (node.Name == "#text") {
-                // if node is named #text then that is a blank line (spacing already takes care of that, so we do nothing)
             } else if (node.Name == "figure") {
                 // this gets the image details of both the image and the caption
                 StackLayout chlidLayout = new StackLayout();
