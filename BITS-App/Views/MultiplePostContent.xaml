@@ -3,10 +3,147 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BITS_App.Views.MultiplePostContent">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Grid Padding="5" HorizontalOptions="Fill" ColumnSpacing="10" BackgroundColor="{DynamicResource Primary}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                           Text="The Glen Bard"
+                           FontFamily="UnifrakturMaguntia"
+                           FontAttributes="Bold"
+                           FontSize="29"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center"
+                           TextColor="{DynamicResource Secondary}" />
+
+                        <Label Grid.Column="1"
+                           Text="The Glenbard West Student Newspaper|Est.1927"
+                           FontAttributes="Bold"
+                           HeightRequest="40"
+                           HorizontalTextAlignment="End"
+                           VerticalTextAlignment="End"
+                           TextColor="{DynamicResource Secondary}" />
+                    </Grid>
+
+                    <Rectangle HeightRequest="2"
+                           BackgroundColor="{DynamicResource Secondary}" />
+
+                    <Rectangle HeightRequest="10"
+                           BackgroundColor="{DynamicResource Primary}" />
+                </VerticalStackLayout>
+                <Grid Padding="2" HorizontalOptions="Fill" ColumnSpacing="50" BackgroundColor="{DynamicResource Secondary}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                                Padding="20"
+                                Text="News"
+                                FontAttributes="Bold"
+                                HeightRequest="40"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center"
+                                TextColor="{DynamicResource Primary}" />
+
+                    <Label Grid.Column="1"
+                                    Text="Features"
+                                    FontAttributes="Bold"
+                                    HeightRequest="40"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    TextColor="{DynamicResource Primary}" />
+
+                    <Label Grid.Column="2"
+                                    Text="Entertainment"
+                                    FontAttributes="Bold"
+                                    HeightRequest="40"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    TextColor="{DynamicResource Primary}" />
+
+                    <Label Grid.Column="3"
+                                    Text="Sports"
+                                    FontAttributes="Bold"
+                                    HeightRequest="40"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    TextColor="{DynamicResource Primary}" />
+
+                    <Label Grid.Column="4"
+                                    Text="Video"
+                                    FontAttributes="Bold"
+                                    HeightRequest="40"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    TextColor="{DynamicResource Primary}" />
+
+                    <Label Grid.Column="5"
+                                    Text="Opinion"
+                                    FontAttributes="Bold"
+                                    HeightRequest="40"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    TextColor="{DynamicResource Primary}" />
+
+                    <Label Grid.Column="6"
+                                    Text="Archive"
+                                    FontAttributes="Bold"
+                                    HeightRequest="40"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    TextColor="{DynamicResource Primary}" />
+                    
+                </Grid>
+                <HorizontalStackLayout>
+                    <Grid Padding="30" HorizontalOptions="Fill" RowSpacing="5" ColumnSpacing="30">
+                        <Grid Padding="10" HorizontalOptions="Fill" ColumnSpacing="20" RowSpacing="5" BackgroundColor="{DynamicResource Secondary}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Grid.Column="0"
+                                Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
+                                MaximumHeightRequest="300"/>
+
+                            <Label Grid.Column="1"
+                                   Grid.Row="0"
+                                   Text="Forensics kicks off 2022-23 season bringing 'connectedness' back"
+                                   FontAttributes="Bold"
+                                   FontSize="30"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Start"
+                                   TextColor="Black"/>
+                            
+                            <Label Grid.Column="1"                                 
+                                   Text="
+                                   Forensics kicks off 2022-23 season bringing 'connectedness' back"
+                                   FontAttributes="Bold"
+                                   FontSize="30"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Start"
+                                   TextColor="Black"/>
+                        </Grid>
+                       
+                    </Grid>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
