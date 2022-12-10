@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BITS_App.Views.MultiplePostPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Grid Padding="5" HorizontalOptions="Fill" ColumnSpacing="10" BackgroundColor="{DynamicResource Primary}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                           Text="The Glen Bard"
+                           FontFamily="UnifrakturMaguntia"
+                           FontAttributes="Bold"
+                           FontSize="29"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center"
+                           TextColor="{DynamicResource Secondary}" />
+
+                        <Label Grid.Column="1"
+                           Text="The Glenbard West Student Newspaper|Est.1927"
+                           FontAttributes="Bold"
+                           HeightRequest="40"
+                           HorizontalTextAlignment="End"
+                           VerticalTextAlignment="End"
+                           TextColor="{DynamicResource Secondary}" />
+                    </Grid>
+
+                    <Rectangle HeightRequest="2"
+                           BackgroundColor="{DynamicResource Secondary}" />
+
+                    <Rectangle HeightRequest="10"
+                           BackgroundColor="{DynamicResource Primary}" />
+                </VerticalStackLayout>
+
+                <!-- Listing articles below -->
+                <VerticalStackLayout Padding="10"
+                                     Spacing="10"> 
+                    <!-- there's a bug in in MAUI with word-wrapping -->
+                    <HorizontalStackLayout Spacing="10" BackgroundColor="LightGray">
+                        <Image Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
+                               WidthRequest="100"
+                               Aspect="AspectFill"/>
+
+                        <VerticalStackLayout MaximumWidthRequest="270" Spacing="5" Padding="5">
+                            <Label Text="Forensics kicks off 2022-23 season bringing 'connectedness' back"
+                                   FontAttributes="Bold"
+                                   FontSize="15"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Start"
+                                   TextColor="Black"/>
+
+                            <Label Text="After its first few tournaments this month, West’s Forensics team is excited to start off its 2022-23 season better than ever, focusing this year on “connectedness” after the pandemic according to Ms. Grace Rangira, head coach..."
+                                   FontAttributes="Bold"
+                                   FontSize="8"
+                                   LineBreakMode="WordWrap"
+                                   HeightRequest="40"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Start"
+                                   TextColor="Black"/>
+
+                            <Label Text="Ethan Parab, Tech Specialist | Nov 28 2022"
+                                   FontSize="8"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="WordWrap"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="End"
+                                   TextColor="Black"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

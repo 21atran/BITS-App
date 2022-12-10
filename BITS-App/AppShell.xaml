@@ -8,7 +8,7 @@
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        ContentTemplate="{DataTemplate views:MultiplePostContent}"
+        ContentTemplate="{DataTemplate views:MultiplePostPage}}"
         Route="MainPage" />
 
 </Shell>
