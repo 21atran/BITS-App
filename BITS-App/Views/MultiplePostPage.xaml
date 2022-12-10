@@ -38,41 +38,9 @@
                 </VerticalStackLayout>
 
                 <!-- Listing articles below -->
-                <VerticalStackLayout Padding="10"
-                                     Spacing="10"> 
-                    <!-- there's a bug in in MAUI with word-wrapping -->
-                    <HorizontalStackLayout Spacing="10" BackgroundColor="LightGray">
-                        <Image Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
-                               WidthRequest="100"
-                               Aspect="AspectFill"/>
-
-                        <VerticalStackLayout MaximumWidthRequest="270" Spacing="5" Padding="5">
-                            <Label Text="Forensics kicks off 2022-23 season bringing 'connectedness' back"
-                                   FontAttributes="Bold"
-                                   FontSize="15"
-                                   HorizontalTextAlignment="Start"
-                                   VerticalTextAlignment="Start"
-                                   TextColor="Black"/>
-
-                            <Label Text="After its first few tournaments this month, West’s Forensics team is excited to start off its 2022-23 season better than ever, focusing this year on “connectedness” after the pandemic according to Ms. Grace Rangira, head coach..."
-                                   FontAttributes="Bold"
-                                   FontSize="8"
-                                   LineBreakMode="WordWrap"
-                                   HeightRequest="40"
-                                   HorizontalTextAlignment="Start"
-                                   VerticalTextAlignment="Start"
-                                   TextColor="Black"/>
-
-                            <Label Text="Ethan Parab, Tech Specialist | Nov 28 2022"
-                                   FontSize="8"
-                                   FontAttributes="Bold"
-                                   LineBreakMode="WordWrap"
-                                   HorizontalTextAlignment="Start"
-                                   VerticalTextAlignment="End"
-                                   TextColor="Black"/>
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
+                <VerticalStackLayout x:Name="PostPanelStack"
+                                     Padding="10"
+                                     Spacing="10"/>
             </VerticalStackLayout>
         </ScrollView>
     </ContentPage.Content>
