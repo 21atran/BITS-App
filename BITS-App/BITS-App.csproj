@@ -58,13 +58,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\MultiplePostPage.xaml.cs">
+	    <DependentUpon>MultiplePostPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\PostPage.xaml.cs">
 	    <DependentUpon>PostPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\MultiplePostContent.xaml">
+	  <MauiXaml Update="Views\MultiplePostPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PostPage.xaml">

@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace BITS_App.Views {
-    public partial class MultiplePostContent : ContentPage {
+    public partial class MultiplePostPage : ContentPage {
 
-        public MultiplePostContent() {
+        public MultiplePostPage() {
             InitializeComponent();
 
             Dispatcher.Dispatch(async () => await GetPostsAsync());
