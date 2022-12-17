@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BITS_App.Views.StaffProfilePage">
+
+    <ScrollView>
+        <VerticalStackLayout>
+                <Grid Padding="5" HorizontalOptions="Fill" ColumnSpacing="10" BackgroundColor="{DynamicResource Primary}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                           Text="The Glen Bard"
+                           FontFamily="UnifrakturMaguntia"
+                           FontAttributes="Bold"
+                           FontSize="29"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center"
+                           TextColor="{DynamicResource Secondary}"
+                           BackgroundColor="{DynamicResource Primary}"/>
+
+                    <Label Grid.Column="1"
+                           Text="The Glenbard West Student Newspaper|Est.1927"
+                           HeightRequest="40"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="End"
+                           VerticalTextAlignment="End"
+                           TextColor="{DynamicResource Secondary}" 
+                           BackgroundColor="{DynamicResource Primary}"/>
+                </Grid>
+
+            <VerticalStackLayout Padding="10" Spacing="15">
+                <HorizontalStackLayout Padding="10" Spacing="10">
+                    <Image
+                            Source="https://gwhsnews.org/wp-content/uploads/2020/02/Ethan-Parab-staff-image-900x720.png"
+                            HeightRequest="100"/>
+
+                    <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
+
+                        <Label Text="Ethan Parab | Tech Specialist"
+                               FontAttributes="Bold"
+                               FontSize="15"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                        <Label Text="Ethan Parab is a senior at Glenbard West and a Tech Specialist of The Glen Bard. In addition to newspaper, he enjoys playing tennis, reading, and computer programming in his free time, also being the leader of the Bard's Tech Team..."
+                               FontAttributes="Bold"
+                               FontSize="10"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <Rectangle Background="{DynamicResource Tertiary}"
+                           HeightRequest="1"/>
+
+                <Label Text="Articles by Ethan Parab"
+                       FontAttributes="Bold"
+                       FontSize="15"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       TextColor="{DynamicResource Tertiary}"/>
+
+                <Rectangle Background="{DynamicResource Tertiary}"
+                           HeightRequest="1"/>
+
+                <HorizontalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGrey">
+                    <Image
+                            Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
+                            HeightRequest="100"/>
+
+                    <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
+
+                        <Label Text="Forensics kicks off 2022-23 season bringing “connectedness” back"
+                               FontAttributes="Bold"
+                               FontSize="12"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                        <Label Text="After its first few tournaments this month, West’s Forensics team is excited to start off its 2022-23 season better than ever..."
+                               FontAttributes="Bold"
+                               FontSize="8"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                        <Label Text="Ethan Parab | Nov 28, 2022"
+                               FontAttributes="Bold"
+                               FontSize="10"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGrey">
+                    <Image
+                        Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
+                        HeightRequest="100"/>
+
+                    <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
+
+                        <Label Text="Forensics kicks off 2022-23 season bringing “connectedness” back"
+                               FontAttributes="Bold"
+                               FontSize="12"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                        <Label Text="After its first few tournaments this month, West’s Forensics team is excited to start off its 2022-23 season better than ever..."
+                               FontAttributes="Bold"
+                               FontSize="8"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                        <Label Text="Ethan Parab | Nov 28, 2022"
+                               FontAttributes="Bold"
+                               FontSize="10"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGrey">
+                    <Image
+                        Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
+                        HeightRequest="100"/>
+
+                    <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
+
+                        <Label Text="Forensics kicks off 2022-23 season bringing “connectedness” back"
+                               FontAttributes="Bold"
+                               FontSize="12"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                        <Label Text="After its first few tournaments this month, West’s Forensics team is excited to start off its 2022-23 season better than ever..."
+                               FontAttributes="Bold"
+                               FontSize="8"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                        <Label Text="Ethan Parab | Nov 28, 2022"
+                               FontAttributes="Bold"
+                               FontSize="10"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGrey">
+                    <Image
+                        Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
+                        HeightRequest="100"/>
+
+                    <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
+
+                        <Label Text="Forensics kicks off 2022-23 season bringing “connectedness” back"
+                               FontAttributes="Bold"
+                               FontSize="12"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                        <Label Text="After its first few tournaments this month, West’s Forensics team is excited to start off its 2022-23 season better than ever..."
+                               FontAttributes="Bold"
+                               FontSize="8"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                        <Label Text="Ethan Parab | Nov 28, 2022"
+                               FontAttributes="Bold"
+                               FontSize="10"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               TextColor="{DynamicResource Tertiary}"/>
+
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
