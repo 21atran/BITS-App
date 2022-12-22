@@ -13,28 +13,28 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="0"
-                           Text="The Glen Bard"
-                           FontFamily="UnifrakturMaguntia"
-                           FontAttributes="Bold"
-                           FontSize="29"
-                           HorizontalTextAlignment="Start"
-                           VerticalTextAlignment="Center"
-                           TextColor="{DynamicResource Secondary}" />
+                               Text="The Glen Bard"
+                               FontFamily="UnifrakturMaguntia"
+                               FontAttributes="Bold"
+                               FontSize="29"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               TextColor="{DynamicResource Secondary}" />
 
                         <Label Grid.Column="1"
-                           Text="The Glenbard West Student Newspaper|Est.1927"
-                           FontAttributes="Bold"
-                           HeightRequest="40"
-                           HorizontalTextAlignment="End"
-                           VerticalTextAlignment="End"
-                           TextColor="{DynamicResource Secondary}" />
+                               Text="The Glenbard West Student Newspaper|Est.1927"
+                               FontAttributes="Bold"
+                               HeightRequest="40"
+                               HorizontalTextAlignment="End"
+                               VerticalTextAlignment="End"
+                               TextColor="{DynamicResource Secondary}" />
                     </Grid>
 
                     <Rectangle HeightRequest="2"
-                           BackgroundColor="{DynamicResource Secondary}" />
+                               BackgroundColor="{DynamicResource Secondary}" />
 
                     <Rectangle HeightRequest="10"
-                           BackgroundColor="{DynamicResource Primary}" />
+                               BackgroundColor="{DynamicResource Primary}" />
                 </VerticalStackLayout>
 
                 <!-- Listing articles below -->

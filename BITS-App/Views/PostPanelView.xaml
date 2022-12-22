@@ -18,7 +18,7 @@
                    VerticalTextAlignment="Start"
                    TextColor="Black"/>
 
-            <Label Text="/{except here}..."
+            <Label x:Name="ExcerptLabel"
                    FontAttributes="Bold"
                    FontSize="8"
                    LineBreakMode="WordWrap"
@@ -27,8 +27,7 @@
                    VerticalTextAlignment="Start"
                    TextColor="Black"/>
 
-            <Label
-                FontSize="8"
+            <Label FontSize="8"
                    FontAttributes="Bold"
                    LineBreakMode="WordWrap"
                    HorizontalTextAlignment="Start"
