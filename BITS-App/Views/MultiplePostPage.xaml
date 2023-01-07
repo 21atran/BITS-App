@@ -39,8 +39,8 @@
 
                 <!-- Listing articles below -->
                 <VerticalStackLayout x:Name="PostPanelStack"
-                                     Padding="15"
-                                     Spacing="20"
+                                     Padding="10"
+                                     Spacing="10"
                                      HorizontalOptions="FillAndExpand"/>
             </VerticalStackLayout>
         </ScrollView>
