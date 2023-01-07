@@ -6,23 +6,24 @@
         <ScrollView>
             <VerticalStackLayout>
                 <VerticalStackLayout>
-                    <Grid Padding="5" HorizontalOptions="Fill" ColumnSpacing="10" BackgroundColor="{DynamicResource Primary}">
+                    <Grid Padding="10,0,10,5" VerticalOptions="Center" HorizontalOptions="Fill" ColumnSpacing="10" BackgroundColor="{DynamicResource Primary}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
+                       
                         <Label Grid.Column="0"
                                Text="The Glen Bard"
                                FontFamily="UnifrakturMaguntia"
                                FontAttributes="Bold"
-                               FontSize="29"
+                               FontSize="Title"
                                HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Center"
+                               VerticalTextAlignment="End"
                                TextColor="{DynamicResource Secondary}" />
 
                         <Label Grid.Column="1"
                                Text="The Glenbard West Student Newspaper|Est.1927"
+                               FontSize="Caption"
                                FontAttributes="Bold"
                                HeightRequest="40"
                                HorizontalTextAlignment="End"
