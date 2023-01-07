@@ -3,20 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BITS_App.Views.PostPanelView">
     <!-- there's a bug in in MAUI with word-wrapping -->
-    <HorizontalStackLayout Spacing="10"
-                           BackgroundColor="LightGray">
-        <Image Source="{Binding Path=FeaturedMedia, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
+
+    <Grid HeightRequest="100"
+          BackgroundColor="LightGrey">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0"
+               Source="{Binding Path=FeaturedMedia, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
                WidthRequest="100"
                HeightRequest="100"
                Aspect="AspectFill"/>
 
-        <VerticalStackLayout HeightRequest="100" HorizontalOptions="Start" Spacing="5" Padding="10">
+        <VerticalStackLayout Grid.Column="1"
+                             HeightRequest="100"
+                             HorizontalOptions="Start"
+                             Spacing="5"
+                             Padding="10">
             <Label Text="{Binding Path=Title, FallbackValue='Title', TargetNullValue='null'}"
                    FontAttributes="Bold"
                    FontSize="15"
                    HorizontalTextAlignment="Start"
-                   HeightRequest="20"
-                   LineBreakMode="WordWrap"
+                   LineBreakMode="TailTruncation"
                    VerticalTextAlignment="Start"
                    TextColor="Black"/>
 
@@ -25,6 +35,7 @@
                    FontSize="8"
                    LineBreakMode="WordWrap"
                    HeightRequest="40"
+                   MaxLines="3"
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Start"
                    TextColor="Black"/>
@@ -45,5 +56,5 @@
                 </Label.Text>
             </Label>
         </VerticalStackLayout>
-    </HorizontalStackLayout>
+    </Grid>
 </ContentView>
