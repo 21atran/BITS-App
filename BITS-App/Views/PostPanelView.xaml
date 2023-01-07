@@ -6,15 +6,17 @@
     <HorizontalStackLayout Spacing="10"
                            BackgroundColor="LightGray">
         <Image Source="{Binding Path=FeaturedMedia, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
-               MaximumHeightRequest="200"
-               MaximumWidthRequest="200"
-               Aspect="Fill"/>
+               WidthRequest="100"
+               HeightRequest="100"
+               Aspect="AspectFill"/>
 
-        <VerticalStackLayout MaximumWidthRequest="300" Spacing="5" Padding="10">
+        <VerticalStackLayout HeightRequest="100" HorizontalOptions="Start" Spacing="5" Padding="10">
             <Label Text="{Binding Path=Title, FallbackValue='Title', TargetNullValue='null'}"
                    FontAttributes="Bold"
                    FontSize="15"
                    HorizontalTextAlignment="Start"
+                   HeightRequest="20"
+                   LineBreakMode="WordWrap"
                    VerticalTextAlignment="Start"
                    TextColor="Black"/>
 
@@ -32,6 +34,7 @@
                    LineBreakMode="WordWrap"
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="End"
+                   HeightRequest="10"
                    TextColor="Black">
                 <Label.Text>
                     <MultiBinding StringFormat="{}{0} | {1:M}, {1:yyyy}">
