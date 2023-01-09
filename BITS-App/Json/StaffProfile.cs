@@ -48,29 +48,26 @@ namespace BITS_App.Json {
 				public int count { get; set;  }
 				public string filter { get; set; }
 			}
-			public Excerpt excerpt { get; set; }
-			public class Excerpt : IRenderable, IProtectable {
-				public string rendered { get; set; }
-				[JsonProperty("protected")]
-				public bool isProtected { get; set; }
-			}
-			public string profileImageUrl { get; set; }
-			public Links _links { get; set; }
-			public class Links {
-				public List<Hyperlink> self { get; set; }
-				public List<Hyperlink> collection { get; set; }
-				public List<Hyperlink> about { get; set; }
-				[JsonProperty("wp:featuredmedia")]
-				public List<EmbeddableHyperlink> wp_featuredmedia { get; set; }
-				[JsonProperty("wp:attachment")]
-				public List<Hyperlink> wp_attachment { get; set; }
-				public List<Curie> curies { get; set; }
-				public class Curie : Hyperlink {
-					public string name { get; set; }
-					public bool templated { get; set; }
-				}
-			}
 		}
-	}
+        public string excerpt { get; set; }
+        public string profileImageUrl { get; set; }
+        public Links _links { get; set; }
+        public class Links
+        {
+            public List<Hyperlink> self { get; set; }
+            public List<Hyperlink> collection { get; set; }
+            public List<Hyperlink> about { get; set; }
+            [JsonProperty("wp:featuredmedia")]
+            public List<EmbeddableHyperlink> wp_featuredmedia { get; set; }
+            [JsonProperty("wp:attachment")]
+            public List<Hyperlink> wp_attachment { get; set; }
+            public List<Curie> curies { get; set; }
+            public class Curie : Hyperlink
+            {
+                public string name { get; set; }
+                public bool templated { get; set; }
+            }
+        }
+    }
 }
 

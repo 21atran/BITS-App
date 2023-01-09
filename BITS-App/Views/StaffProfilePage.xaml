@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BITS_App.Views.StaffProfilePage">
@@ -39,14 +39,20 @@
 
                     <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
 
-                        <Label Text="Ethan Parab | Tech Specialist"
-                               FontAttributes="Bold"
+                        <Label FontAttributes="Bold"
                                FontSize="15"
                                HorizontalTextAlignment="Start"
                                VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
+                               TextColor="{DynamicResource Tertiary}">
+                            <Label.Text>
+                                <MultiBinding StringFormat="{}{0} | {1}">
+                                    <Binding Path="Name" FallbackValue="Name" TargetNullValue="null"/>
+                                    <Binding Path="Excerpt" FallbackValue="Excerpt" TargetNullValue="null"/>
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
 
-                        <Label Text="Ethan Parab is a senior at Glenbard West and a Tech Specialist of The Glen Bard. In addition to newspaper, he enjoys playing tennis, reading, and computer programming in his free time, also being the leader of the Bard's Tech Team..."
+                        <Label Text="{Binding Path=Bio, FallbackValue='Bio',TargetNullValue='null'}"
                                FontAttributes="Bold"
                                FontSize="10"
                                HorizontalTextAlignment="Start"
