@@ -33,9 +33,8 @@
 
             <VerticalStackLayout Padding="10" Spacing="15">
                 <HorizontalStackLayout Padding="10" Spacing="10">
-                    <Image
-                            Source="https://gwhsnews.org/wp-content/uploads/2020/02/Ethan-Parab-staff-image-900x720.png"
-                            HeightRequest="100"/>
+                    <Image Source="{Binding Path=FeaturedMedia, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
+                           HeightRequest="100"/>
 
                     <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
 
@@ -67,7 +66,7 @@
                 <Rectangle Background="{DynamicResource Tertiary}"
                            HeightRequest="1"/>
 
-                <Label Text="Articles by Ethan Parab"
+                <Label Text="{Binding Path=Name, StringFormat='Articles by {0}', FallbackValue='Name', TargetNullValue='null'}"
                        FontAttributes="Bold"
                        FontSize="15"
                        HorizontalTextAlignment="Center"

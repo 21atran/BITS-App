@@ -7,9 +7,10 @@ namespace BITS_App.Models {
 	/// Model representing a staff profile.
 	///</summary>
 	internal class StaffProfile : RestBase {
+        public override event PropertyChangedEventHandler PropertyChanged;
 
-		//FIELDS
-		protected Json.StaffProfile staffProfileJson;
+        //FIELDS
+        protected Json.StaffProfile staffProfileJson;
 		protected Media featuredMedia;
 
 		//probably need a constructor of some sort LMAO
@@ -20,7 +21,7 @@ namespace BITS_App.Models {
 		public string? Name => staffProfileJson?.title?.rendered;
 		public string? Excerpt => staffProfileJson?.excerpt;
 		public string? Bio => staffProfileJson?.content?.rendered;
-		public string? FeaturedMedia => null;
+		public string? FeaturedMedia => featuredMedia?.Link;
 
 		// METHODS - i need something that would snatch the data to make it accessible for Amy
 		public override async Task RefreshAsync() {
@@ -39,18 +40,30 @@ namespace BITS_App.Models {
 			}
 
             //update bindings according to the profile selected
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Content"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Excerpt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bio"));
 
-			//do we need to account for when a staff member updates their info?
-			//what methods would i need to create for the staff profile? would it be the same as the post since it's retrieving data from a source?
+            // generates a Media model for the Featured Media and registers to updates like a binding would - this is supposed to be directly bound to the view, but MAUI doesn't support that as of this writing, so we use a workaround
+            featuredMedia = new Media(staffProfileJson.featured_media);
+            featuredMedia.PropertyChanged += OnPropertyChanged;
 
+            // refreshes the Media model
+            await featuredMedia.RefreshAsync();
 
-			
-
-
-
+            //do we need to account for when a staff member updates their info?
+            //what methods would i need to create for the staff profile? would it be the same as the post since it's retrieving data from a source?
         }
-	}
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
+            switch (e.PropertyName) {
+                // if the Featured Media model has a change of link, it cascades to this model's FeaturedMedia binding, which will in turn cascade up to the UI
+                case "Link":
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FeaturedMedia"));
+                    break;
+            }
+        }
+    }
 }
 
 
