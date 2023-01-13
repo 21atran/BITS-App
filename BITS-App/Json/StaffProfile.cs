@@ -52,8 +52,7 @@ namespace BITS_App.Json {
         public string excerpt { get; set; }
         public string profileImageUrl { get; set; }
         public Links _links { get; set; }
-        public class Links
-        {
+        public class Links {
             public List<Hyperlink> self { get; set; }
             public List<Hyperlink> collection { get; set; }
             public List<Hyperlink> about { get; set; }

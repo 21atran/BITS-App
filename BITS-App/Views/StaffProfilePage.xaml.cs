@@ -32,8 +32,7 @@ public partial class StaffProfilePage : ContentPage {
         foreach (HtmlNode node in parNodes.Nodes()) {
             // if node is named p then it is a paragraph
             if (node.Name == "p") {
-                Label label = new Label()
-                {
+                Label label = new Label() {
                     Text = node.InnerText,
                     FontSize = 10,
                     FontAttributes = FontAttributes.Bold,
@@ -48,14 +47,12 @@ public partial class StaffProfilePage : ContentPage {
                 // this gets the image details of both the image and the caption
                 StackLayout chlidLayout = new StackLayout();
 
-                Image img = new Image()
-                {
+                Image img = new Image() {
                     Source = node.SelectSingleNode("//img").Attributes["src"].Value.ToString()
                     // can format here
                 };
 
-                Label label = new Label()
-                {
+                Label label = new Label() {
                     Padding = 10,
                     Text = node.SelectSingleNode("//figcaption").InnerText,
                     FontSize = 10.5,

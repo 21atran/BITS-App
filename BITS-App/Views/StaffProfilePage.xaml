@@ -5,7 +5,10 @@
 
     <ScrollView>
         <VerticalStackLayout>
-                <Grid Padding="5" HorizontalOptions="Fill" ColumnSpacing="10" BackgroundColor="{DynamicResource Primary}">
+                <Grid Padding="5"
+                      HorizontalOptions="Fill"
+                      ColumnSpacing="10"
+                      BackgroundColor="{DynamicResource Primary}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -50,8 +53,12 @@
                            TextColor="{DynamicResource Tertiary}">
                         <Label.Text>
                             <MultiBinding StringFormat="{}{0} | {1}">
-                                <Binding Path="Name" FallbackValue="Name" TargetNullValue="null"/>
-                                <Binding Path="Excerpt" FallbackValue="Excerpt" TargetNullValue="null"/>
+                                <Binding Path="Name"
+                                         FallbackValue="Name"
+                                         TargetNullValue="null"/>
+                                <Binding Path="Excerpt"
+                                         FallbackValue="Excerpt"
+                                         TargetNullValue="null"/>
                             </MultiBinding>
                         </Label.Text>
                     </Label>
