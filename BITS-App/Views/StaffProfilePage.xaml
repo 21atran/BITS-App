@@ -31,38 +31,37 @@
                            BackgroundColor="{DynamicResource Primary}"/>
                 </Grid>
 
-            <VerticalStackLayout Padding="10" Spacing="15">
-                <HorizontalStackLayout Padding="10" Spacing="10">
-                    <Image Source="{Binding Path=FeaturedMedia, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
-                           HeightRequest="100"/>
+            <Grid Padding="10"
+                  ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="125"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Column="0"
+                       Source="{Binding Path=FeaturedMedia, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
+                       Aspect="AspectFill"/>
 
-                    <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
+                <VerticalStackLayout Grid.Column="1" Spacing="10">
+                    <Label FontAttributes="Bold"
+                           FontSize="15"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Start"
+                           TextColor="{DynamicResource Tertiary}">
+                        <Label.Text>
+                            <MultiBinding StringFormat="{}{0} | {1}">
+                                <Binding Path="Name" FallbackValue="Name" TargetNullValue="null"/>
+                                <Binding Path="Excerpt" FallbackValue="Excerpt" TargetNullValue="null"/>
+                            </MultiBinding>
+                        </Label.Text>
+                    </Label>
 
-                        <Label FontAttributes="Bold"
-                               FontSize="15"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}">
-                            <Label.Text>
-                                <MultiBinding StringFormat="{}{0} | {1}">
-                                    <Binding Path="Name" FallbackValue="Name" TargetNullValue="null"/>
-                                    <Binding Path="Excerpt" FallbackValue="Excerpt" TargetNullValue="null"/>
-                                </MultiBinding>
-                            </Label.Text>
-                        </Label>
+                    <StackLayout x:Name="bioStackLayout"/>
+                </VerticalStackLayout>
+            </Grid>
 
-                        <Label Text="{Binding Path=Bio, FallbackValue='Bio',TargetNullValue='null'}"
-                               FontAttributes="Bold"
-                               FontSize="10"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout Padding="10" Spacing="10">
+            <VerticalStackLayout Padding="10"
+                                 Spacing="10">
                 <Rectangle Background="{DynamicResource Tertiary}"
                            HeightRequest="1"/>
 
@@ -75,131 +74,14 @@
 
                 <Rectangle Background="{DynamicResource Tertiary}"
                            HeightRequest="1"/>
-
-                <HorizontalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGrey">
-                    <Image
-                            Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
-                            HeightRequest="100"/>
-
-                    <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
-
-                        <Label Text="Forensics kicks off 2022-23 season bringing “connectedness” back"
-                               FontAttributes="Bold"
-                               FontSize="12"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                        <Label Text="After its first few tournaments this month, West’s Forensics team is excited to start off its 2022-23 season better than ever..."
-                               FontAttributes="Bold"
-                               FontSize="8"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                        <Label Text="Ethan Parab | Nov 28, 2022"
-                               FontAttributes="Bold"
-                               FontSize="10"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGrey">
-                    <Image
-                        Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
-                        HeightRequest="100"/>
-
-                    <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
-
-                        <Label Text="Forensics kicks off 2022-23 season bringing “connectedness” back"
-                               FontAttributes="Bold"
-                               FontSize="12"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                        <Label Text="After its first few tournaments this month, West’s Forensics team is excited to start off its 2022-23 season better than ever..."
-                               FontAttributes="Bold"
-                               FontSize="8"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                        <Label Text="Ethan Parab | Nov 28, 2022"
-                               FontAttributes="Bold"
-                               FontSize="10"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGrey">
-                    <Image
-                        Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
-                        HeightRequest="100"/>
-
-                    <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
-
-                        <Label Text="Forensics kicks off 2022-23 season bringing “connectedness” back"
-                               FontAttributes="Bold"
-                               FontSize="12"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                        <Label Text="After its first few tournaments this month, West’s Forensics team is excited to start off its 2022-23 season better than ever..."
-                               FontAttributes="Bold"
-                               FontSize="8"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                        <Label Text="Ethan Parab | Nov 28, 2022"
-                               FontAttributes="Bold"
-                               FontSize="10"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGrey">
-                    <Image
-                        Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
-                        HeightRequest="100"/>
-
-                    <VerticalStackLayout Spacing="10" MaximumWidthRequest="230">
-
-                        <Label Text="Forensics kicks off 2022-23 season bringing “connectedness” back"
-                               FontAttributes="Bold"
-                               FontSize="12"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                        <Label Text="After its first few tournaments this month, West’s Forensics team is excited to start off its 2022-23 season better than ever..."
-                               FontAttributes="Bold"
-                               FontSize="8"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                        <Label Text="Ethan Parab | Nov 28, 2022"
-                               FontAttributes="Bold"
-                               FontSize="10"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               TextColor="{DynamicResource Tertiary}"/>
-
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
             </VerticalStackLayout>
+            
+            <!-- TODO: Add functionality to the below with panels -->
+            <!-- Listing articles below -->
+            <VerticalStackLayout x:Name="PostPanelStack"
+                                 Padding="10"
+                                 Spacing="10"
+                                 HorizontalOptions="FillAndExpand"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
