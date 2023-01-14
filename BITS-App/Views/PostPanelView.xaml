@@ -33,7 +33,6 @@
             <Label x:Name="ExcerptLabel"
                    FontAttributes="Bold"
                    FontSize="8"
-                   LineBreakMode="WordWrap"
                    HeightRequest="40"
                    MaxLines="3"
                    HorizontalTextAlignment="Start"
@@ -42,7 +41,6 @@
 
             <Label FontSize="8"
                    FontAttributes="Bold"
-                   LineBreakMode="WordWrap"
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="End"
                    HeightRequest="10"
