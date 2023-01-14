@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BITS_App.Views.StaffProfilePage">
+
+    <ScrollView>
+        <VerticalStackLayout>
+                <Grid Padding="5"
+                      HorizontalOptions="Fill"
+                      ColumnSpacing="10"
+                      BackgroundColor="{DynamicResource Primary}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                           Text="The Glen Bard"
+                           FontFamily="UnifrakturMaguntia"
+                           FontAttributes="Bold"
+                           FontSize="29"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center"
+                           TextColor="{DynamicResource Secondary}"
+                           BackgroundColor="{DynamicResource Primary}"/>
+
+                    <Label Grid.Column="1"
+                           Text="The Glenbard West Student Newspaper|Est.1927"
+                           HeightRequest="40"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="End"
+                           VerticalTextAlignment="End"
+                           TextColor="{DynamicResource Secondary}" 
+                           BackgroundColor="{DynamicResource Primary}"/>
+                </Grid>
+
+            <Grid Padding="10"
+                  ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="125"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Column="0"
+                       Source="{Binding Path=FeaturedMedia, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
+                       Aspect="AspectFill"/>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="10">
+                    <Label FontAttributes="Bold"
+                           FontSize="15"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Start"
+                           TextColor="{DynamicResource Tertiary}">
+                        <Label.Text>
+                            <MultiBinding StringFormat="{}{0} | {1}">
+                                <Binding Path="Name"
+                                         FallbackValue="Name"
+                                         TargetNullValue="null"/>
+                                <Binding Path="Excerpt"
+                                         FallbackValue="Excerpt"
+                                         TargetNullValue="null"/>
+                            </MultiBinding>
+                        </Label.Text>
+                    </Label>
+
+                    <StackLayout x:Name="bioStackLayout"/>
+                </VerticalStackLayout>
+            </Grid>
+
+            <VerticalStackLayout Padding="10"
+                                 Spacing="10">
+                <Rectangle Background="{DynamicResource Tertiary}"
+                           HeightRequest="1"/>
+
+                <Label Text="{Binding Path=Name, StringFormat='Articles by {0}', FallbackValue='Name', TargetNullValue='null'}"
+                       FontAttributes="Bold"
+                       FontSize="15"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       TextColor="{DynamicResource Tertiary}"/>
+
+                <Rectangle Background="{DynamicResource Tertiary}"
+                           HeightRequest="1"/>
+            </VerticalStackLayout>
+            
+            <!-- TODO: Add functionality to the below with panels -->
+            <!-- Listing articles below -->
+            <VerticalStackLayout x:Name="PostPanelStack"
+                                 Padding="10"
+                                 Spacing="10"
+                                 HorizontalOptions="FillAndExpand"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

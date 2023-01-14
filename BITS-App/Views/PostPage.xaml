@@ -58,7 +58,7 @@
                        HorizontalOptions="Center" />
                 
                 <!-- to be populated by LoadContentAsync -->
-                <StackLayout x:Name="contentStackLayout"></StackLayout>
+                <StackLayout x:Name="contentStackLayout"/>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
