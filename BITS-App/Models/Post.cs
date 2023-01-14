@@ -42,6 +42,7 @@ namespace BITS_App.Models {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("JobTitles"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AuthorsAndJobTitlesFormatted"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Date"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Excerpt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Content"));
 
             // generates a Media model for the Featured Media and registers to updates like a binding would - this is supposed to be directly bound to the view, but MAUI doesn't support that as of this writing, so we use a workaround
@@ -66,8 +67,8 @@ namespace BITS_App.Models {
         public string? Title => postJson?.title?.rendered;
         public List<string>? Authors => postJson?.custom_fields?.writer;
         public List<string>? JobTitles => postJson?.custom_fields?.jobtitle;
-        public string? AuthorsAndJobTitlesFormatted { get
-            {
+        public string? AuthorsAndJobTitlesFormatted { 
+            get {
                 // TODO: Swap this entire binding out for a proper converter.
                 string formatted = "";
 
@@ -89,6 +90,7 @@ namespace BITS_App.Models {
             } 
         }
         public DateTime? Date => postJson?.date;
+        public string? Excerpt => postJson?.excerpt?.rendered;
         public string? Content => postJson?.content?.rendered;
         public string? FeaturedMedia => featuredMedia?.Link;
 #nullable disable
