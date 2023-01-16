@@ -14,7 +14,7 @@ namespace BITS_App.Json {
         public string slug { get; set; }
         public string status { get; set; }
         public string type { get; set; }
-        public string link { get; set; }
+        public Uri link { get; set; }
         public Title title { get; set; }
         public class Title : IRenderable {
             public string rendered { get; set; }
@@ -58,7 +58,7 @@ namespace BITS_App.Json {
             public List<string> branch_link { get; set; }
             public List<string> sno_views { get; set; }
             public List<string> writer { get; set; }
-            public List<string> branch_link_new { get; set; }
+            public List<Uri> branch_link_new { get; set; }
             public List<Term> terms { get; set; }
             public class Term {
                 public int term_id { get; set; }
@@ -100,10 +100,6 @@ namespace BITS_App.Json {
                 public string taxonomy { get; set; }
             }
             public List<Curie> curies { get; set; }
-            public class Curie : Hyperlink {
-                public string name { get; set; }
-                public bool templated { get; set; }
-            }
         }
     }
 }

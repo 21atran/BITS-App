@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 
 namespace BITS_App.Json {
 	public class StaffProfile {
@@ -15,7 +14,7 @@ namespace BITS_App.Json {
 		public string slug { get; set; }
 		public string status { get; set; }
 		public string type { get; set; }
-		public string link { get; set; }
+		public Uri link { get; set; }
 		public Title title { get; set; }
 		public class Title : IRenderable {
 			public string rendered { get; set; }
@@ -50,7 +49,7 @@ namespace BITS_App.Json {
 			}
 		}
         public string excerpt { get; set; }
-        public string profileImageUrl { get; set; }
+        public Uri profileImageUrl { get; set; }
         public Links _links { get; set; }
         public class Links {
             public List<Hyperlink> self { get; set; }
