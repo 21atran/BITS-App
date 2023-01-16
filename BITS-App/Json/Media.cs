@@ -12,7 +12,7 @@
         public string slug { get; set; }
         public string status { get; set; }
         public string type { get; set; }
-        public string link { get; set; }
+        public Uri link { get; set; }
         public Title title { get; set; }
         public class Title : IRenderable {
             public string rendered { get; set; }
@@ -52,7 +52,7 @@
                 public int width { get; set; }
                 public int height { get; set; }
                 public string mime_type { get; set; }
-                public string source_url { get; set; }
+                public Uri source_url { get; set; }
             }
             public class ImageMeta {
                 public string aperture { get; set; }
@@ -70,7 +70,7 @@
             }
         }
         public int post { get; set; }
-        public string source_url { get; set; }
+        public Uri source_url { get; set; }
         public Links _links { get; set; }
         public class Links {
             public List<Hyperlink> self { get; set; }
