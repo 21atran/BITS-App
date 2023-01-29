@@ -11,6 +11,6 @@ public partial class App : Application {
 
 		client = new HttpClient();
 
-		MainPage = new AppShell();
+		MainPage = new AppTabbedPage();
 	}
 }

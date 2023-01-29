@@ -5,10 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:BITS_App"
     xmlns:views="clr-namespace:BITS_App.Views"
+    xmlns:pages="clr-namespace:BITS_App.Pages"
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        ContentTemplate="{DataTemplate views:MultiplePostPage}}"
+        ContentTemplate="{DataTemplate pages:HomePage}"
         Route="MainPage" />
 
 </Shell>

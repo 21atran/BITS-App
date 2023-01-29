@@ -76,7 +76,7 @@ namespace BITS_App.Models {
                     for (int i = 0; i < postJson?.custom_fields?.writer?.Count; i++) {
                         formatted += postJson.custom_fields.writer[i];
                         formatted += ", ";
-                        formatted += postJson.custom_fields.jobtitle[i];
+                        //formatted += postJson.custom_fields.jobtitle[i];
 
                         if (i < postJson.custom_fields.writer.Count - 1) {
                             formatted += " - ";
