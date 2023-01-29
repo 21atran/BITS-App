@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BITS_App.Pages.HomePage">
+    
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="10">
+            <Rectangle HeightRequest="5"
+                       BackgroundColor="{DynamicResource Primary}"/>
+            
+            <VerticalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGray">
+                <Label
+                    Text="Forensics kicks off 2022-23 season brining connectedness back"
+                    FontAttributes="Bold"
+                    FontSize="Title"/>
+
+                <Label
+                    Text="After its first few tournaments this month, West's Forensics team is excited to start off its 2022-23 season better than ever, focusing this year on connectedness after the pandemic according to Ms. Grace Rangira..."/>
+
+                <Image
+                    Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
+                    MaximumHeightRequest="300"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+
+                <Label
+                    Text="Ethan Parab, | November 28, 2022"/>
+
+            </VerticalStackLayout>
+
+            <Rectangle HeightRequest="5"
+                       BackgroundColor="{DynamicResource Primary}"/>
+
+            <HorizontalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGray">
+                <Image
+                    Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
+                    MaximumHeightRequest="100"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+
+                <VerticalStackLayout Spacing="5" MaximumWidthRequest="250">
+                    <Label 
+                        Text="Forensics kicks off 2022-23 season brining connectedness back"
+                        FontAttributes="Bold"/>
+
+                    <Label
+                        Text="After its first few tournaments this month, West's Forensics team is excited to start off its 2022-23 season better than ever, focusing this year on connectedness after the pandemic according to Ms. Grace Rangira..."
+                        FontSize="8"/>
+
+                    <Label
+                        Text="Ethan Parab, | November 28, 2022"
+                        FontSize="8"/>
+
+                </VerticalStackLayout>
+                
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Padding="10" Spacing="10" BackgroundColor="LightGray">
+                <Image
+                    Source="https://gwhsnews.org/wp-content/uploads/2022/11/PXL_20221112_181155243-900x678.jpg"
+                    MaximumHeightRequest="100"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+
+                <VerticalStackLayout Spacing="5" MaximumWidthRequest="250">
+                    <Label 
+                        Text="Forensics kicks off 2022-23 season brining connectedness back"
+                        FontAttributes="Bold"/>
+
+                    <Label
+                        Text="After its first few tournaments this month, West's Forensics team is excited to start off its 2022-23 season better than ever, focusing this year on connectedness after the pandemic according to Ms. Grace Rangira..."
+                        FontSize="8"/>
+
+                    <Label
+                        Text="Ethan Parab, | November 28, 2022"
+                        FontSize="8"/>
+
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
