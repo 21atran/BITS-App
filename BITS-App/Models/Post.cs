@@ -10,7 +10,7 @@ namespace BITS_App.Models {
         public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS
-        protected Json.Post postJson;
+        protected Json.Post json;
         protected Media featuredMedia;
 
         // CONSTRUCTOR
@@ -30,7 +30,7 @@ namespace BITS_App.Models {
                 HttpResponseMessage response = await App.client.GetAsync(uri);
                 if (response.IsSuccessStatusCode) {
                     string content = await response.Content.ReadAsStringAsync();
-                    postJson = JsonConvert.DeserializeObject<Json.Post>(content);
+                    json = JsonConvert.DeserializeObject<Json.Post>(content);
                 }
             } catch (Exception ex) {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
@@ -46,7 +46,7 @@ namespace BITS_App.Models {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Content"));
 
             // generates a Media model for the Featured Media and registers to updates like a binding would - this is supposed to be directly bound to the view, but MAUI doesn't support that as of this writing, so we use a workaround
-            featuredMedia = new Media(postJson.featured_media);
+            featuredMedia = new Media(json.featured_media);
             featuredMedia.PropertyChanged += OnPropertyChanged;
 
             // refreshes the Media model
@@ -64,21 +64,21 @@ namespace BITS_App.Models {
 
         // BINDINGS
 #nullable enable
-        public string? Title => postJson?.title?.rendered;
-        public List<string>? Authors => postJson?.custom_fields?.writer;
-        public List<string>? JobTitles => postJson?.custom_fields?.jobtitle;
+        public string? Title => json?.title?.rendered;
+        public List<string>? Authors => json?.custom_fields?.writer;
+        public List<string>? JobTitles => json?.custom_fields?.jobtitle;
         public string? AuthorsAndJobTitlesFormatted { 
             get {
                 // TODO: Swap this entire binding out for a proper converter.
                 string formatted = "";
 
                 try {
-                    for (int i = 0; i < postJson?.custom_fields?.writer?.Count; i++) {
-                        formatted += postJson.custom_fields.writer[i];
+                    for (int i = 0; i < json?.custom_fields?.writer?.Count; i++) {
+                        formatted += json.custom_fields.writer[i];
                         formatted += ", ";
-                        //formatted += postJson.custom_fields.jobtitle[i];
+                        //formatted += json.custom_fields.jobtitle[i];
 
-                        if (i < postJson.custom_fields.writer.Count - 1) {
+                        if (i < json.custom_fields.writer.Count - 1) {
                             formatted += " - ";
                         }
                     }
@@ -89,9 +89,9 @@ namespace BITS_App.Models {
                 return formatted;
             } 
         }
-        public DateTime? Date => postJson?.date;
-        public string? Excerpt => postJson?.excerpt?.rendered;
-        public string? Content => postJson?.content?.rendered;
+        public DateTime? Date => json?.date;
+        public string? Excerpt => json?.excerpt?.rendered;
+        public string? Content => json?.content?.rendered;
         public string? FeaturedMedia => featuredMedia?.Link;
 #nullable disable
     }

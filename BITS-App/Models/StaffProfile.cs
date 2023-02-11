@@ -10,7 +10,7 @@ namespace BITS_App.Models {
         public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS
-        protected Json.StaffProfile staffProfileJson;
+        protected Json.StaffProfile json;
 		protected Media featuredMedia;
 
         // CONSTRUCTOR
@@ -30,7 +30,7 @@ namespace BITS_App.Models {
 				HttpResponseMessage response = await App.client.GetAsync(uri);
 				if (response.IsSuccessStatusCode) {
 					string content = await response.Content.ReadAsStringAsync();
-					staffProfileJson = JsonConvert.DeserializeObject<Json.StaffProfile>(content);
+					json = JsonConvert.DeserializeObject<Json.StaffProfile>(content);
 				}
 			} catch (Exception ex) {
 				Debug.WriteLine(@"\tERROR {0}", ex.Message);
@@ -42,7 +42,7 @@ namespace BITS_App.Models {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bio"));
 
             // generates a Media model for the Featured Media and registers to updates like a binding would - this is supposed to be directly bound to the view, but MAUI doesn't support that as of this writing, so we use a workaround
-            featuredMedia = new Media(staffProfileJson.featured_media);
+            featuredMedia = new Media(json.featured_media);
             featuredMedia.PropertyChanged += OnPropertyChanged;
 
             // refreshes the Media model
@@ -60,9 +60,9 @@ namespace BITS_App.Models {
 
         // BINDINGS
 #nullable enable
-        public string? Name => staffProfileJson?.title?.rendered;
-        public string? Excerpt => staffProfileJson?.excerpt;
-        public string? Bio => staffProfileJson?.content?.rendered;
+        public string? Name => json?.title?.rendered;
+        public string? Excerpt => json?.excerpt;
+        public string? Bio => json?.content?.rendered;
         public string? FeaturedMedia => featuredMedia?.Link;
 #nullable disable
     }

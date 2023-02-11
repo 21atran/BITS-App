@@ -3,21 +3,17 @@ using System.ComponentModel;
 using System.Diagnostics;
 
 namespace BITS_App.Models {
-    /// <summary>
-    /// Model representing a single media entry.
-    /// </summary>
-    internal class Media : RestBase {
+    internal class Category : RestBase {
         public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS
-        protected Json.Media mediaJson;
+        protected Json.Category json;
 
-        // CONSTRUCTOR
         /// <summary>
         /// Initializes a new instance of the <see cref="Media">Media</see> class with the specified ID.
         /// </summary>
         /// <param name="id">ID number of the post</param>
-        public Media(int id) : base($"/wp/v2/media/{id}") { }
+        public Category(int id) : base($"/wp/v2/categories/{id}") { }
 
         // METHODS
         public override async Task RefreshAsync() {
@@ -26,7 +22,7 @@ namespace BITS_App.Models {
                 HttpResponseMessage response = await App.client.GetAsync(uri);
                 if (response.IsSuccessStatusCode) {
                     string content = await response.Content.ReadAsStringAsync();
-                    mediaJson = JsonConvert.DeserializeObject<Json.Media>(content);
+                    json = JsonConvert.DeserializeObject<Json.Category>(content);
                 }
             } catch (Exception ex) {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
@@ -37,8 +33,8 @@ namespace BITS_App.Models {
 
         // BINDINGS
 #nullable enable
-        public int? Id => mediaJson?.id;
-        public string? Link => mediaJson.link?.ToString();
+        public int? Id => json?.id;
+        public string? Name => json?.name;
 #nullable disable
     }
 }
