@@ -7,19 +7,29 @@ namespace BITS_App.Models
 {
     public class PostsSet
     {
-        public List<int> postIDs = new List<int>();
-        string request = "";
+        private List<int> postIDs = new List<int>();
+        Uri uri;
+
         public PostsSet()
         {
-            int catID = 23;
-            string query = "categories";
-            request = $"https://{App.BASE_URL}/wp-json/wp/v2/{query}/{catID}";
+            string catID = "23";
+            string queryName = "categories";
+            //request = $"https://{App.BASE_URL}/wp-json/wp/v2/{queryName}/{catID}";
+
+            // this should do the same thing as the request above but more automated
+            UriBuilder builder = new UriBuilder()
+            {
+                Scheme = "https",
+                Host = App.BASE_URL,
+                Path = "/wp-json/wp/v2/posts"
+            };
+
+            uri = builder.Uri;
         }
 
         public async Task GetPostsAsync()
         {
             // gets URI for server counterpart to model
-            Uri uri = new(request);
             // attempts to make an HTTP GET request and deserialize it for easy access
             try
             {
