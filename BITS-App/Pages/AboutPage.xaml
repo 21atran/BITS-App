@@ -2,11 +2,83 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BITS_App.Pages.AboutPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="10">
+            <Rectangle
+                HeightRequest="20"/>
+
+            <VerticalStackLayout>
+                <Label Text="About Us"
+                       FontSize="15"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Padding="10">
+                <Label Text="Welcome to the official Glen Bard news website! We are here to fairly convey issues, entertain, and provide Glenbard West High School with local and global news. All student-produced media, news, and writing is made to respectfully represent not only the school, but the community as a whole as well."
+                       FontSize="10"
+                       HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Follow Us On Our Socials!"
+                       FontAttributes="Bold"
+                       FontSize="15"
+                       HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+
+            <Rectangle BackgroundColor="{DynamicResource Primary}"/>
+
+            <VerticalStackLayout BackgroundColor="LightGray" Padding="10" Spacing="20">
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="10" Spacing="10">
+                    <Image
+                        Source="https://yt3.ggpht.com/a/AGF-l78pLsbaV1nF_Pg3012reYvXLbuqdXRw9Wpdwg=s900-c-k-c0xffffffff-no-rj-mo"
+                        MaximumHeightRequest="20"
+                        HorizontalOptions="Center"/>
+
+                    <Label Text="@theglenbard"
+                           HorizontalTextAlignment="Center"
+                           FontSize="10"
+                           VerticalTextAlignment="Center"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="10" Spacing="10">
+                    <Image
+                        Source="https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/b8/87/f9/b887f9aa-5eb9-980a-b3f5-a829403d993c/source/1280x1280bb.jpg"
+                        MaximumHeightRequest="20"
+                        HorizontalOptions="Center"/>
+
+                    <Label Text="@gwhsnews4421"
+                           HorizontalTextAlignment="Center"
+                           FontSize="10"
+                           VerticalTextAlignment="Center"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="10" Spacing="10">
+                    <Image
+                        Source="https://deadline.com/wp-content/uploads/2016/09/twitter-logo1-e1602443184297.jpg?w=800"
+                        MaximumHeightRequest="20"
+                        HorizontalOptions="Center"/>
+
+                    <Label Text="@TheGlenBard"
+                           HorizontalTextAlignment="Center"
+                           FontSize="10"
+                           VerticalTextAlignment="Center"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="10" Spacing="10">
+                    <Image
+                        Source="https://www.companycasuals.com/custompg/itc/images/Facebook-logo.png"
+                        MaximumHeightRequest="20"
+                        HorizontalOptions="Center"/>
+
+                    <Label Text="@TheGlenBardNewspaper"
+                           HorizontalTextAlignment="Center"
+                           FontSize="10"
+                           VerticalTextAlignment="Center"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
