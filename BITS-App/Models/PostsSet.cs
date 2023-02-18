@@ -16,13 +16,21 @@ namespace BITS_App.Models
             string queryName = "categories";
             //request = $"https://{App.BASE_URL}/wp-json/wp/v2/{queryName}/{catID}";
 
+            // the articles for "news" (23) is in the link gwhsnews.org/wp-json/wp/v2/posts?categories=23
+            // but it doesn't show all 195 that we see in the count from gwhsnews.org/wp-json/wp/v2/categories/23
+
             // this should do the same thing as the request above but more automated
+            // not sure how the uri builder works
             UriBuilder builder = new UriBuilder()
             {
                 Scheme = "https",
                 Host = App.BASE_URL,
                 Path = "/wp-json/wp/v2/posts"
             };
+
+
+            // i think that once you get to the url above with the articles you can get the different things we need but idk how to do that
+            // also within each individual article json there is a "categories" tag that lists the ids of the categorries it is connect to since there is usually more than 1
 
             uri = builder.Uri;
         }
