@@ -52,11 +52,7 @@
 	  <None Remove="Resources\Images\fallback_image.png" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <EmbeddedResource Include="Pages\AboutPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	</ItemGroup>
+	
 
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

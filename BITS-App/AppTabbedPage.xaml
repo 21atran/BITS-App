@@ -25,5 +25,11 @@
             <views:StaffProfilePage/>
         </x:Arguments>
     </NavigationPage>
-    
+
+    <NavigationPage Title="About">
+        <x:Arguments>
+            <pages:AboutPage/>
+        </x:Arguments>
+    </NavigationPage>
+
 </TabbedPage>
