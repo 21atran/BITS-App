@@ -10,10 +10,25 @@ namespace BITS_App.Models {
         public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS
-        protected Json.Post json;
+        private Json.Post _json;
+        public Json.Post json {
+            get
+            {
+                return _json;
+            }
+            set
+            {
+                _json = value;
+                endpoint = value?.id == null ? "" : $"/wp/v2/posts/{value.id}";
+            }
+        }
+
+
         protected Media featuredMedia;
 
         // CONSTRUCTOR
+        public Post() { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Post">Post</see> class with the specified ID.
         /// </summary>
@@ -30,7 +45,7 @@ namespace BITS_App.Models {
                 HttpResponseMessage response = await App.client.GetAsync(uri);
                 if (response.IsSuccessStatusCode) {
                     string content = await response.Content.ReadAsStringAsync();
-                    json = JsonConvert.DeserializeObject<Json.Post>(content);
+                    _json = JsonConvert.DeserializeObject<Json.Post>(content);
                 }
             } catch (Exception ex) {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
@@ -46,7 +61,7 @@ namespace BITS_App.Models {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Content"));
 
             // generates a Media model for the Featured Media and registers to updates like a binding would - this is supposed to be directly bound to the view, but MAUI doesn't support that as of this writing, so we use a workaround
-            featuredMedia = new Media(json.featured_media);
+            featuredMedia = new Media(_json.featured_media);
             featuredMedia.PropertyChanged += OnPropertyChanged;
 
             // refreshes the Media model
@@ -64,21 +79,21 @@ namespace BITS_App.Models {
 
         // BINDINGS
 #nullable enable
-        public string? Title => json?.title?.rendered;
-        public List<string>? Authors => json?.custom_fields?.writer;
-        public List<string>? JobTitles => json?.custom_fields?.jobtitle;
+        public string? Title => _json?.title?.rendered;
+        public List<string>? Authors => _json?.custom_fields?.writer;
+        public List<string>? JobTitles => _json?.custom_fields?.jobtitle;
         public string? AuthorsAndJobTitlesFormatted { 
             get {
                 // TODO: Swap this entire binding out for a proper converter.
                 string formatted = "";
 
                 try {
-                    for (int i = 0; i < json?.custom_fields?.writer?.Count; i++) {
-                        formatted += json.custom_fields.writer[i];
+                    for (int i = 0; i < _json?.custom_fields?.writer?.Count; i++) {
+                        formatted += _json.custom_fields.writer[i];
                         formatted += ", ";
-                        //formatted += json.custom_fields.jobtitle[i];
+                        //formatted += _json.custom_fields.jobtitle[i];
 
-                        if (i < json.custom_fields.writer.Count - 1) {
+                        if (i < _json.custom_fields.writer.Count - 1) {
                             formatted += " - ";
                         }
                     }
@@ -89,9 +104,9 @@ namespace BITS_App.Models {
                 return formatted;
             } 
         }
-        public DateTime? Date => json?.date;
-        public string? Excerpt => json?.excerpt?.rendered;
-        public string? Content => json?.content?.rendered;
+        public DateTime? Date => _json?.date;
+        public string? Excerpt => _json?.excerpt?.rendered;
+        public string? Content => _json?.content?.rendered;
         public string? FeaturedMedia => featuredMedia?.Link;
 #nullable disable
     }
