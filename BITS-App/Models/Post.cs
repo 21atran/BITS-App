@@ -6,7 +6,7 @@ namespace BITS_App.Models {
     /// <summary>
     /// Model representing a single post entry.
     /// </summary>
-    internal class Post : RestBase {
+    public class Post : RestBase {
         public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS

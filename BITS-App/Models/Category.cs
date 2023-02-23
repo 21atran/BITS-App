@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 
 namespace BITS_App.Models {
-    internal class Category : RestBase {
+    public class Category : RestBase {
         public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS
