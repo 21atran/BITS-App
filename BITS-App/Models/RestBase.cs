@@ -4,7 +4,7 @@ namespace BITS_App.Models {
     /// <summary>
     /// Provides basic REST API helpers to expedite the process of creating REST-based models.
     /// </summary>
-    internal class RestBase : INotifyPropertyChanged {
+    public class RestBase : INotifyPropertyChanged {
         public virtual event PropertyChangedEventHandler PropertyChanged;
 
         protected static string REST_URL => String.Format("{0}/wp-json", App.BASE_URL);

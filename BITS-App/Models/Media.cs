@@ -6,11 +6,11 @@ namespace BITS_App.Models {
     /// <summary>
     /// Model representing a single media entry.
     /// </summary>
-    internal class Media : RestBase {
+    public class Media : RestBase {
         public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS
-        protected Json.Media mediaJson;
+        protected Json.Media json;
 
         // CONSTRUCTOR
         /// <summary>
@@ -26,7 +26,7 @@ namespace BITS_App.Models {
                 HttpResponseMessage response = await App.client.GetAsync(uri);
                 if (response.IsSuccessStatusCode) {
                     string content = await response.Content.ReadAsStringAsync();
-                    mediaJson = JsonConvert.DeserializeObject<Json.Media>(content);
+                    json = JsonConvert.DeserializeObject<Json.Media>(content);
                 }
             } catch (Exception ex) {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
@@ -37,8 +37,8 @@ namespace BITS_App.Models {
 
         // BINDINGS
 #nullable enable
-        public int? Id => mediaJson?.id;
-        public string? Link => mediaJson.link?.ToString();
+        public int? Id => json?.id;
+        public string? Link => json.link?.ToString();
 #nullable disable
     }
 }

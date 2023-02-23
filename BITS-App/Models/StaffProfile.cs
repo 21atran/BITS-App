@@ -6,7 +6,7 @@ namespace BITS_App.Models {
 	/// <summary>
 	/// Model representing a staff profile.
 	///</summary>
-	internal class StaffProfile : RestBase {
+	public class StaffProfile : RestBase {
         public override event PropertyChangedEventHandler PropertyChanged;
 
         // FIELDS
