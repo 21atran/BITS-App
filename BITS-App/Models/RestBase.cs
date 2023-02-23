@@ -10,6 +10,8 @@ namespace BITS_App.Models {
         protected static string REST_URL => String.Format("{0}/wp-json", App.BASE_URL);
         protected string endpoint = "";
 
+        protected RestBase() { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RestBase">RestBase</see> class with the specified endpoint.
         /// </summary>
