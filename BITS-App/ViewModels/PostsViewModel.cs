@@ -1,39 +1,63 @@
-﻿
+﻿using BITS_App.Models;
 using Newtonsoft.Json;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
-
+using System.Runtime.CompilerServices;
 
 namespace BITS_App.ViewModels
 {
 
-	
-    /// <summary>
-    /// Represents an object that has inherited a list of posts to sort through
-    /// </summary>
-	public class PostsViewModel : INotifyPropertyChanged//Post is to represent the type of elements in the collection view
+	public class PostsViewModel : INotifyPropertyChanged
 	{
-		IList<post> source; //list of ALL posts
-		Post selectedPost; //i dont think we need but in case we want to do something with the selected post
-		int selectionCount = 1;
+		public ObservableCollection<Post> Posts { get; private set; }
 
-		CollectionView postsView = new CollectionView();
-		postsView.SetBinding(ItemsView.ItemsSourceProperty, "post"/*post/article object*/);
-		public ObservableCollection<post> Posts { get; set; } //represents name of the grouping (like news, entertainment, etc)
-		public IList<PostsModel> EmptyPosts { get; set; } 
-		public Command GetPostsCommand { get; set; }
 		public PostsViewModel()
 		{
-			
-			source = new List<post>() { } //insert list of ALL posts (getter method maybe)
 
-			GetPostsCommand = new Command(async () => await GetPostsAsync());
-			Posts = new ObservableCollection<post>
-			{
-				new post { /*put necessary data by using a getter method of some sort*/}
-			}
+
+
 		}
-	}
+
+        public async Task RefreshAsync()
+        {
+            // gets URI for server counterpart to model
+            Uri uri = new($"https://{App.BASE_URL}/wp-json/wp/v2/posts");
+            List<Post> postList = new List<Post>();
+            // attempts to make an HTTP GET request and deserialize it for easy access
+            try
+            {
+                HttpResponseMessage response = await App.client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    List<Json.Post> postJsonList = JsonConvert.DeserializeObject<List<Json.Post>>(content);
+                    postList = new List<Post>();
+                    foreach (Json.Post postJson in postJsonList) {
+                        postList.Add(new Post()
+                        {
+                            json = postJson
+                        });
+                    }
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            Posts = new ObservableCollection<Post>(postList);
+        }
+
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+    }
 }
 
