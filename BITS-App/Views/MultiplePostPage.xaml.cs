@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel;
 using System.Diagnostics;
+using BITS_App.ViewModels;
 
 namespace BITS_App.Views {
     public partial class MultiplePostPage : ContentPage {
@@ -8,7 +9,8 @@ namespace BITS_App.Views {
         public MultiplePostPage() {
             InitializeComponent();
 
-            Dispatcher.Dispatch(async () => await GetPostsAsync());
+            BindingContext = new PostsViewModel();
+            Dispatcher.Dispatch(async () => await ((PostsViewModel)BindingContext).RefreshAsync());
         }
 
         public async Task GetPostsAsync() {
@@ -23,7 +25,7 @@ namespace BITS_App.Views {
                     List<Json.Post> postJson = JsonConvert.DeserializeObject<List<Json.Post>>(content);
                     foreach(Json.Post post in postJson) {
                         PostPanelView add = new PostPanelView(post.id);
-                        PostPanelStack.Add(add);
+                        //PostPanelStack.Add(add);
                     }
                     // TODO: create new function eventually
                 }
