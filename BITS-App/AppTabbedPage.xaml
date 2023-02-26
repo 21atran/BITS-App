@@ -16,7 +16,7 @@
     
     <NavigationPage Title="Topics">
         <x:Arguments>
-            <views:MultiplePostPage/>
+            <pages:HomePage/>
         </x:Arguments>
     </NavigationPage>
     
