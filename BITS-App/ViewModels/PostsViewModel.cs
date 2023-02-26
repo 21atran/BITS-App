@@ -16,20 +16,16 @@ namespace BITS_App.ViewModels
 		{
 
 
+        }
 
-		}
-
-        public async Task RefreshAsync()
-        {
+        public async Task RefreshAsync() {
             // gets URI for server counterpart to model
             Uri uri = new($"https://{App.BASE_URL}/wp-json/wp/v2/posts");
             List<Post> postList = new List<Post>();
             // attempts to make an HTTP GET request and deserialize it for easy access
-            try
-            {
+            try {
                 HttpResponseMessage response = await App.client.GetAsync(uri);
-                if (response.IsSuccessStatusCode)
-                {
+                if (response.IsSuccessStatusCode) {
                     string content = await response.Content.ReadAsStringAsync();
                     List<Json.Post> postJsonList = JsonConvert.DeserializeObject<List<Json.Post>>(content);
                     postList = new List<Post>();
@@ -39,15 +35,18 @@ namespace BITS_App.ViewModels
                             json = postJson
                         });
                     }
-                   
+
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
 
             Posts = new ObservableCollection<Post>(postList);
+            OnPropertyChanged(nameof(Posts));
+
+            foreach (Post post in Posts) {
+                await post.RefreshAsync();
+            }
         }
 
         #region INotifyPropertyChanged
