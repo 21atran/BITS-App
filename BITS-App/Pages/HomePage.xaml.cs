@@ -13,12 +13,7 @@ public partial class HomePage : ContentPage {
     void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         int selected = ((Models.Post)(e.CurrentSelection[0])).Id ?? -1;
-        Debug.WriteLine(selected);
-        Debug.WriteLine((object)Shell.Current ?? (object)"null");
-        Dictionary<string, object> navigationParameter = new Dictionary<string, object>
-        {
-            { "id", selected }
-        };
+        //Debug.WriteLine(selected);
         Dispatcher.Dispatch(async () => { await Navigation.PushAsync(new PostPage(selected)); }) ;
         
 
