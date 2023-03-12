@@ -9,7 +9,9 @@ public partial class App : Application {
 	public App() {
 		InitializeComponent();
 
-		client = new HttpClient();
+        MainPage = new NavigationPage(new Pages.HomePage());
+
+        client = new HttpClient();
 
 		MainPage = new AppTabbedPage();
 	}

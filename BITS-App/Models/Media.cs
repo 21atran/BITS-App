@@ -38,7 +38,7 @@ namespace BITS_App.Models {
         // BINDINGS
 #nullable enable
         public int? Id => json?.id;
-        public string? Link => json.link?.ToString();
+        public string? Link => json?.link?.ToString();
 #nullable disable
     }
 }

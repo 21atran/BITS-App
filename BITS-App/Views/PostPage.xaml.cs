@@ -4,10 +4,10 @@ using System.ComponentModel;
 namespace BITS_App.Views;
 
 public partial class PostPage : ContentPage {
-    public PostPage() {
+    public PostPage(int id) {
         InitializeComponent();
 
-        BindingContext = new Models.Post(7767);
+        BindingContext = new Models.Post(id); // 7767
         ((Models.Post)BindingContext).PropertyChanged += OnPropertyChanged;
 
         Dispatcher.Dispatch(async () => await ((Models.Post)BindingContext).RefreshAsync());
