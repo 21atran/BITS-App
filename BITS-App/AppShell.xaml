@@ -10,6 +10,9 @@
 
     <ShellContent
         ContentTemplate="{DataTemplate pages:HomePage}"
-        Route="MainPage" />
+        Route="Main" />
 
+    <ShellContent
+        ContentTemplate="{DataTemplate views:PostPage}"
+        Route="PostPage" />
 </Shell>

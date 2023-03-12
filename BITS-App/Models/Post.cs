@@ -79,6 +79,7 @@ namespace BITS_App.Models {
 
         // BINDINGS
 #nullable enable
+        public int? Id => _json?.id ?? -1;
         public string? Title => _json?.title?.rendered;
         public List<string>? Authors => _json?.custom_fields?.writer;
         public List<string>? JobTitles => _json?.custom_fields?.jobtitle;

@@ -11,6 +11,6 @@ public static class MauiProgram {
 				fonts.AddFont("UnifrakturMaguntia.ttf", "UnifrakturMaguntia");
 			});
 
-		return builder.Build();
+        return builder.Build();
 	}
 }
