@@ -3,20 +3,32 @@ using System.ComponentModel;
 
 namespace BITS_App.Views;
 
+/// <summary>
+/// Page designed to display a <see cref="Models.Post">Post</see>.
+/// </summary>
 public partial class PostPage : ContentPage {
-    public PostPage(int id) {
+    public PostPage() {
         InitializeComponent();
 
-        BindingContext = new Models.Post(id); // 7767
-        ((Models.Post)BindingContext).PropertyChanged += OnPropertyChanged;
-
-        Dispatcher.Dispatch(async () => await ((Models.Post)BindingContext).RefreshAsync());
+        BindingContextChanged += OnBindingContextChanged;
     }
 
     /// <summary>
-    /// Loads content to XAML from HTML Content binding of <see cref="Models.Post">Models.Post</see>
+    /// Callback for when BindingContext is changed.
     /// </summary>
-    public async Task LoadContentAsync() {
+    /// <param name="sender">Expected to be of type <see cref="Models.Post">Post</see></param>
+    /// <param name="e"></param>
+    private void OnBindingContextChanged(object sender, EventArgs e) {
+        if (BindingContext != null) {
+            ((Models.Post)BindingContext).PropertyChanged += OnPropertyChanged;
+            Dispatcher.Dispatch(async () => await LoadContentAsync());
+        }
+    }
+
+    /// <summary>
+    /// Loads content to XAML from HTML Content binding of <see cref="Models.Post">Post</see>
+    /// </summary>
+    private async Task LoadContentAsync() {
         // gets html in string format
         string html = ((Models.Post)BindingContext).Content ?? "";
 

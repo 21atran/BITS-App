@@ -12,6 +12,10 @@
                 <DataTemplate>
                     <Grid HeightRequest="100"
                           BackgroundColor="LightGrey">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" />
+                        </Grid.GestureRecognizers>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="*"/>
