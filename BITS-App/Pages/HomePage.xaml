@@ -5,9 +5,7 @@
     
     <ScrollView>
         <CollectionView ItemsSource="{Binding Posts}"
-                        Margin="20"
-                        SelectionMode="Single"
-                        SelectionChanged="OnCollectionViewSelectionChanged">
+                        Margin="20">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid HeightRequest="100"
