@@ -1,6 +1,5 @@
 namespace BITS_App.Pages;
 using BITS_App.ViewModels;
-using BITS_App.Views;
 
 public partial class HomePage : ContentPage {
 	public HomePage() {

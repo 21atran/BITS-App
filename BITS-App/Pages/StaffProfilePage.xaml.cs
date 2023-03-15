@@ -1,43 +1,31 @@
 using HtmlAgilityPack;
 using System.ComponentModel;
 
-namespace BITS_App.Views;
+namespace BITS_App.Pages;
 
-/// <summary>
-/// Page designed to display a <see cref="Models.Post">Post</see>.
-/// </summary>
-public partial class PostPage : ContentPage {
-    public PostPage() {
-        InitializeComponent();
+public partial class StaffProfilePage : ContentPage {
+	public StaffProfilePage() {
+		InitializeComponent();
 
-        BindingContextChanged += OnBindingContextChanged;
+        BindingContext = new Models.StaffProfile(6889);
+        ((Models.StaffProfile)BindingContext).PropertyChanged += OnPropertyChanged;
+
+        Dispatcher.Dispatch(async () => await ((Models.StaffProfile)BindingContext).RefreshAsync());
     }
 
     /// <summary>
-    /// Callback for when BindingContext is changed.
+    /// Loads bio to XAML from HTML Content binding of <see cref="Models.StaffProfile">Models.StaffProfile</see>
     /// </summary>
-    /// <param name="sender">Expected to be of type <see cref="Models.Post">Post</see></param>
-    /// <param name="e"></param>
-    private void OnBindingContextChanged(object sender, EventArgs e) {
-        if (BindingContext != null) {
-            ((Models.Post)BindingContext).PropertyChanged += OnPropertyChanged;
-            Dispatcher.Dispatch(async () => await LoadContentAsync());
-        }
-    }
-
-    /// <summary>
-    /// Loads content to XAML from HTML Content binding of <see cref="Models.Post">Post</see>
-    /// </summary>
-    private async Task LoadContentAsync() {
+    public async Task LoadBioAsync() {
         // gets html in string format
-        string html = ((Models.Post)BindingContext).Content ?? "";
+        string html = ((Models.StaffProfile)BindingContext).Bio ?? "";
 
         // uses agility pack and creates doc with string
         HtmlDocument htmlDoc = new HtmlDocument();
         htmlDoc.LoadHtml(html);
 
         // spacing between paragraphs, images, etc.
-        contentStackLayout.Spacing = 7;
+        bioStackLayout.Spacing = 7;
 
         // gets the nodes
         HtmlNodeCollection parNodes = htmlDoc.DocumentNode.SelectNodes("/");
@@ -46,13 +34,14 @@ public partial class PostPage : ContentPage {
             if (node.Name == "p") {
                 Label label = new Label() {
                     Text = node.InnerText,
-                    FontSize = 14,
-                    Padding = 5,
+                    FontSize = 10,
+                    FontAttributes = FontAttributes.Bold,
+                    TextColor = new Color(21, 21, 21)
                     // can format here
                 };
 
                 // adds the paragraph to document
-                contentStackLayout.Add(label);
+                bioStackLayout.Add(label);
 
             } else if (node.Name == "figure") {
                 // this gets the image details of both the image and the caption
@@ -64,7 +53,7 @@ public partial class PostPage : ContentPage {
                 };
 
                 Label label = new Label() {
-                    Padding = 15,
+                    Padding = 10,
                     Text = node.SelectSingleNode("//figcaption").InnerText,
                     FontSize = 10.5,
                     BackgroundColor = Colors.Transparent
@@ -76,7 +65,7 @@ public partial class PostPage : ContentPage {
                 chlidLayout.Add(label);
 
                 // adds both caption and image at the same time so they are together
-                contentStackLayout.Children.Add(chlidLayout);
+                bioStackLayout.Children.Add(chlidLayout);
             }
         }
     }
@@ -85,8 +74,8 @@ public partial class PostPage : ContentPage {
         if (sender == BindingContext) {
             switch (e.PropertyName) {
                 // if the Content of the model changes, reload it
-                case "Content":
-                    Dispatcher.Dispatch(async () => await LoadContentAsync());
+                case "Bio":
+                    Dispatcher.Dispatch(async () => await LoadBioAsync());
                     break;
             }
         }

@@ -61,21 +61,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\PostPage.xaml.cs">
+	  <Compile Update="Pages\PostPage.xaml.cs">
 	    <DependentUpon>PostPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\PostPage.xaml">
+	  <MauiXaml Update="Pages\PostPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\StaffProfilePage.xaml">
+	  <MauiXaml Update="Pages\StaffProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="ViewModels\" />
+	  <Folder Include="Views\" />
 	</ItemGroup>
 </Project>
