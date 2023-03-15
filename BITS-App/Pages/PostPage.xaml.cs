@@ -1,31 +1,43 @@
 using HtmlAgilityPack;
 using System.ComponentModel;
 
-namespace BITS_App.Views;
+namespace BITS_App.Pages;
 
-public partial class StaffProfilePage : ContentPage {
-	public StaffProfilePage() {
-		InitializeComponent();
+/// <summary>
+/// Page designed to display a <see cref="Models.Post">Post</see>.
+/// </summary>
+public partial class PostPage : ContentPage {
+    public PostPage() {
+        InitializeComponent();
 
-        BindingContext = new Models.StaffProfile(6889);
-        ((Models.StaffProfile)BindingContext).PropertyChanged += OnPropertyChanged;
-
-        Dispatcher.Dispatch(async () => await ((Models.StaffProfile)BindingContext).RefreshAsync());
+        BindingContextChanged += OnBindingContextChanged;
     }
 
     /// <summary>
-    /// Loads bio to XAML from HTML Content binding of <see cref="Models.StaffProfile">Models.StaffProfile</see>
+    /// Callback for when BindingContext is changed.
     /// </summary>
-    public async Task LoadBioAsync() {
+    /// <param name="sender">Expected to be of type <see cref="Models.Post">Post</see></param>
+    /// <param name="e"></param>
+    private void OnBindingContextChanged(object sender, EventArgs e) {
+        if (BindingContext != null) {
+            ((Models.Post)BindingContext).PropertyChanged += OnPropertyChanged;
+            Dispatcher.Dispatch(async () => await LoadContentAsync());
+        }
+    }
+
+    /// <summary>
+    /// Loads content to XAML from HTML Content binding of <see cref="Models.Post">Post</see>
+    /// </summary>
+    private async Task LoadContentAsync() {
         // gets html in string format
-        string html = ((Models.StaffProfile)BindingContext).Bio ?? "";
+        string html = ((Models.Post)BindingContext).Content ?? "";
 
         // uses agility pack and creates doc with string
         HtmlDocument htmlDoc = new HtmlDocument();
         htmlDoc.LoadHtml(html);
 
         // spacing between paragraphs, images, etc.
-        bioStackLayout.Spacing = 7;
+        contentStackLayout.Spacing = 7;
 
         // gets the nodes
         HtmlNodeCollection parNodes = htmlDoc.DocumentNode.SelectNodes("/");
@@ -34,14 +46,13 @@ public partial class StaffProfilePage : ContentPage {
             if (node.Name == "p") {
                 Label label = new Label() {
                     Text = node.InnerText,
-                    FontSize = 10,
-                    FontAttributes = FontAttributes.Bold,
-                    TextColor = new Color(21, 21, 21)
+                    FontSize = 14,
+                    Padding = 5,
                     // can format here
                 };
 
                 // adds the paragraph to document
-                bioStackLayout.Add(label);
+                contentStackLayout.Add(label);
 
             } else if (node.Name == "figure") {
                 // this gets the image details of both the image and the caption
@@ -53,7 +64,7 @@ public partial class StaffProfilePage : ContentPage {
                 };
 
                 Label label = new Label() {
-                    Padding = 10,
+                    Padding = 15,
                     Text = node.SelectSingleNode("//figcaption").InnerText,
                     FontSize = 10.5,
                     BackgroundColor = Colors.Transparent
@@ -65,7 +76,7 @@ public partial class StaffProfilePage : ContentPage {
                 chlidLayout.Add(label);
 
                 // adds both caption and image at the same time so they are together
-                bioStackLayout.Children.Add(chlidLayout);
+                contentStackLayout.Children.Add(chlidLayout);
             }
         }
     }
@@ -74,8 +85,8 @@ public partial class StaffProfilePage : ContentPage {
         if (sender == BindingContext) {
             switch (e.PropertyName) {
                 // if the Content of the model changes, reload it
-                case "Bio":
-                    Dispatcher.Dispatch(async () => await LoadBioAsync());
+                case "Content":
+                    Dispatcher.Dispatch(async () => await LoadContentAsync());
                     break;
             }
         }
