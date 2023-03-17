@@ -12,9 +12,13 @@ public class PostsViewModel : INotifyPropertyChanged {
 
 	public PostsViewModel() { }
 
-    public async Task RefreshAsync() {
+    public async Task RefreshAsync(string category = "")
+    {
+        // until we do something with our lives in the home page (get the id for the category) the category is an empty string
+        // we plop this category id into the new uri as it refreshes or something
+
         // gets URI for server counterpart to model
-        Uri uri = new($"https://{App.BASE_URL}/wp-json/wp/v2/posts");
+        Uri uri = new($"https://{App.BASE_URL}/wp-json/wp/v2/posts/{category}");
         List<Post> postList = new List<Post>();
 
         // attempts to make an HTTP GET request and deserialize it for easy access
