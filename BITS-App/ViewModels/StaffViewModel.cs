@@ -7,13 +7,13 @@ using System.Runtime.CompilerServices;
 
 namespace BITS_App.ViewModels;
 
-public class PostsViewModel : INotifyPropertyChanged {
-	public ObservableCollection<Post> Posts { get; private set; }
+public class StaffViewModel : INotifyPropertyChanged {
+	public ObservableCollection<StaffProfile> StaffProfiles { get; private set; }
 
     public async Task RefreshAsync() {
         // gets URI for server counterpart to model
-        Uri uri = new($"https://{App.BASE_URL}/wp-json/wp/v2/posts");
-        List<Post> postList = new List<Post>();
+        Uri uri = new($"https://{App.BASE_URL}/wp-json/wp/v2/staff_profile");
+        List<StaffProfile> staffProfileList = new List<StaffProfile>();
 
         // attempts to make an HTTP GET request and deserialize it for easy access
         try {
@@ -21,12 +21,12 @@ public class PostsViewModel : INotifyPropertyChanged {
 
             if (response.IsSuccessStatusCode) {
                 string content = await response.Content.ReadAsStringAsync();
-                List<Json.Post> postJsonList = JsonConvert.DeserializeObject<List<Json.Post>>(content);
-                postList = new List<Post>();
+                List<Json.StaffProfile> staffProfileJsonList = JsonConvert.DeserializeObject<List<Json.StaffProfile>>(content);
+                staffProfileList = new List<StaffProfile>();
 
-                foreach (Json.Post postJson in postJsonList) {
-                    postList.Add(new Post() {
-                        json = postJson
+                foreach (Json.StaffProfile staffProfileJson in staffProfileJsonList) {
+                    staffProfileList.Add(new StaffProfile() {
+                        json = staffProfileJson
                     });
                 }
             }
@@ -34,11 +34,11 @@ public class PostsViewModel : INotifyPropertyChanged {
             Debug.WriteLine(@"\tERROR {0}", ex.Message);
         }
 
-        Posts = new ObservableCollection<Post>(postList);
-        OnPropertyChanged(nameof(Posts));
+        StaffProfiles = new ObservableCollection<StaffProfile>(staffProfileList);
+        OnPropertyChanged(nameof(StaffProfiles));
 
-        foreach (Post post in Posts) {
-            await post.RefreshAsync();
+        foreach (StaffProfile staffProfile in StaffProfiles) {
+            await staffProfile.RefreshAsync();
         }
     }
 

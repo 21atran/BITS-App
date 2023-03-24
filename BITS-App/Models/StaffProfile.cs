@@ -11,11 +11,27 @@ public class StaffProfile : RestBase {
     public override event PropertyChangedEventHandler PropertyChanged;
 
     #region FIELDS
-    protected Json.StaffProfile json;
-	protected Media featuredMedia;
+    private Json.StaffProfile _json;
+    public Json.StaffProfile json
+    {
+        get
+        {
+            return _json;
+
+        }
+        set
+        {
+            _json = value;
+            endpoint = value?.id == null ? "" : $"/wp/v2/staff_profile/{value.id}";
+        }
+    }
+    protected Media featuredMedia;
     #endregion
 
-    #region CONSTRUCTOR
+    #region CONSTRUCTORS
+
+    public StaffProfile() { }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="StaffProfile">StaffProfile</see> class with the specified ID.
     /// </summary>
@@ -33,7 +49,7 @@ public class StaffProfile : RestBase {
 			HttpResponseMessage response = await App.client.GetAsync(uri);
 			if (response.IsSuccessStatusCode) {
 				string content = await response.Content.ReadAsStringAsync();
-				json = JsonConvert.DeserializeObject<Json.StaffProfile>(content);
+				_json = JsonConvert.DeserializeObject<Json.StaffProfile>(content);
 			}
 		} catch (Exception ex) {
 			Debug.WriteLine(@"\tERROR {0}", ex.Message);
@@ -45,7 +61,7 @@ public class StaffProfile : RestBase {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bio"));
 
         // generates a Media model for the Featured Media and registers to updates like a binding would - this is supposed to be directly bound to the view, but MAUI doesn't support that as of this writing, so we use a workaround
-        featuredMedia = new Media(json.featured_media);
+        featuredMedia = new Media(_json.featured_media);
         featuredMedia.PropertyChanged += OnPropertyChanged;
 
         // refreshes the Media model
@@ -64,9 +80,9 @@ public class StaffProfile : RestBase {
 
     #region BINDINGS
 #nullable enable
-    public string? Name => json?.title?.rendered;
-    public string? Excerpt => json?.excerpt;
-    public string? Bio => json?.content?.rendered;
+    public string? Name => _json?.title?.rendered;
+    public string? Excerpt => _json?.excerpt;
+    public string? Bio => _json?.content?.rendered;
     public string? FeaturedMedia => featuredMedia?.Link;
 #nullable disable
     #endregion
