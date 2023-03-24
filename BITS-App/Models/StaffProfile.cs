@@ -12,15 +12,11 @@ public class StaffProfile : RestBase {
 
     #region FIELDS
     private Json.StaffProfile _json;
-    public Json.StaffProfile json
-    {
-        get
-        {
+    public Json.StaffProfile json {
+        get {
             return _json;
-
         }
-        set
-        {
+        set {
             _json = value;
             endpoint = value?.id == null ? "" : $"/wp/v2/staff_profile/{value.id}";
         }
