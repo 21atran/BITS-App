@@ -18,8 +18,9 @@ public class StaffViewModel : INotifyPropertyChanged {
         // attempts to make an HTTP GET request and deserialize it for easy access
         try {
             HttpResponseMessage response = await App.client.GetAsync(uri);
-
+            Debug.WriteLine("1");
             if (response.IsSuccessStatusCode) {
+                Debug.WriteLine("2");
                 string content = await response.Content.ReadAsStringAsync();
                 List<Json.StaffProfile> staffProfileJsonList = JsonConvert.DeserializeObject<List<Json.StaffProfile>>(content);
                 staffProfileList = new List<StaffProfile>();
@@ -28,7 +29,9 @@ public class StaffViewModel : INotifyPropertyChanged {
                     staffProfileList.Add(new StaffProfile() {
                         json = staffProfileJson
                     });
+                    Debug.WriteLine("loop");
                 }
+                Debug.WriteLine("3");
             }
         } catch (Exception ex) {
             Debug.WriteLine(@"\tERROR {0}", ex.Message);
@@ -40,6 +43,7 @@ public class StaffViewModel : INotifyPropertyChanged {
         foreach (StaffProfile staffProfile in StaffProfiles) {
             await staffProfile.RefreshAsync();
         }
+        int x = 1;
     }
 
     #region INotifyPropertyChanged
