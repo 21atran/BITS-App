@@ -7,25 +7,29 @@
             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
             android:TabbedPage.ToolbarPlacement="Bottom">
 
-    <NavigationPage Title="Home">
+    <NavigationPage IconImageSource="home_icon.svg" 
+        Title="Home">
         <x:Arguments>
             <pages:HomePage/>
         </x:Arguments>
     </NavigationPage>
     
-    <NavigationPage Title="Topics">
+    <NavigationPage IconImageSource="topic_icon.svg"
+        Title="Topics">
         <x:Arguments>
             <pages:HomePage/>
         </x:Arguments>
     </NavigationPage>
     
-    <NavigationPage Title="Staff">
+    <NavigationPage IconImageSource="staff_icon.svg"
+        Title="Staff">
         <x:Arguments>
             <pages:StaffProfilePage/>
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="About">
+    <NavigationPage IconImageSource="about_icon.svg"
+        Title="About">
         <x:Arguments>
             <pages:AboutPage/>
         </x:Arguments>

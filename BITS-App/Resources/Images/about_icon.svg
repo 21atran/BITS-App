@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 465.37 511.83">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #006838;
+        font-size: 350px;
+      }
+
+      .cls-1, .cls-2 {
+        font-family: UnifrakturMaguntia, UnifrakturMaguntia;
+        isolation: isolate;
+      }
+
+      .cls-2 {
+        fill: #009444;
+        font-size: 300px;
+      }
+    </style>
+  </defs>
+  <text class="cls-2" transform="translate(152.04 445.18)"><tspan x="0" y="0">W</tspan></text>
+  <text class="cls-1" transform="translate(0 300.7) scale(1.04 1)"><tspan x="0" y="0">G</tspan></text>
+</svg>

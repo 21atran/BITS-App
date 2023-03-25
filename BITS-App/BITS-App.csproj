@@ -49,7 +49,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\about_icon.svg" />
 	  <None Remove="Resources\Images\fallback_image.png" />
+	  <None Remove="Resources\Images\home_icon.svg" />
+	  <None Remove="Resources\Images\staff_icon.svg" />
+	  <None Remove="Resources\Images\topic_icon.svg" />
 	  <None Remove="ViewModels\" />
 	</ItemGroup>
 
