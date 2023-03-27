@@ -9,19 +9,26 @@ namespace BITS_App.ViewModels;
 
 public class PostsViewModel : INotifyPropertyChanged {
 	public ObservableCollection<Post> Posts { get; private set; }
+    
+    public int[] Categories { get; set; } = new int[0];
 
 	public PostsViewModel() { }
 
-    public async Task RefreshAsync(string category = "")
-    {
-        // until we do something with our lives in the home page (get the id for the category) the category is an empty string
-        // we plop this category id into the new uri as it refreshes or something
-
-        // gets URI for server counterpart to model
-        Uri uri = new($"https://{App.BASE_URL}/wp-json/wp/v2/posts/{category}");
-        List<Post> postList = new List<Post>();
+    public async Task RefreshAsync() {
+        // builds URI for server counterpart to model
+        UriBuilder builder = new UriBuilder();
+        builder.Scheme = "https";
+        builder.Host = App.BASE_URL;
+        builder.Path = "/wp-json/wp/v2/posts";
+        builder.Query = await new FormUrlEncodedContent(
+            new Dictionary<string, string> {
+                { "categories", string.Join(", ", Categories) },
+            }
+        ).ReadAsStringAsync();
+        Uri uri = builder.Uri;
 
         // attempts to make an HTTP GET request and deserialize it for easy access
+        List<Post> postList = new List<Post>();
         try {
             HttpResponseMessage response = await App.client.GetAsync(uri);
 
