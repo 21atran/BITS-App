@@ -5,8 +5,7 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="10" Spacing="10">
-            <Rectangle
-                HeightRequest="20"/>
+            <Rectangle HeightRequest="20"/>
 
             <VerticalStackLayout>
                 <Label Text="About Us"
@@ -31,104 +30,41 @@
             <Rectangle BackgroundColor="{DynamicResource Primary}"/>
 
             <VerticalStackLayout BackgroundColor="LightGray" Padding="10" Spacing="20">
-
-                
                 <Button Text="Our Instagram"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center">
-
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer Command= "{Binding TapCommand}"
-                        CommandParameter="https://www.instagram.com/theglenbard/"/>
-                    </Button.GestureRecognizers>
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer Command= "{Binding TapCommand}"
+                                                  CommandParameter="https://www.instagram.com/theglenbard/"/>
+                        </Button.GestureRecognizers>
                 </Button>
-                
-                <!--
-                <HorizontalStackLayout HorizontalOptions="Center" Padding="10" Spacing="10">
-                    <Image
-                        Source="instagram_logo.svg"
-                        MaximumHeightRequest="20"
-                        HorizontalOptions="Center"/>
 
-                    <Label Text="@theglenbard"
-                           HorizontalTextAlignment="Center"
-                           FontSize="10"
-                           VerticalTextAlignment="Center"/>
-                </HorizontalStackLayout>
-                -->
-                
                 <Button Text="Our YouTube"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center">
-
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer Command= "{Binding TapCommand}"
-                        CommandParameter="https://www.youtube.com/channel/UCFdpujI8qUuodL7F2jSRMYQ"/>
-                    </Button.GestureRecognizers>
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer Command= "{Binding TapCommand}"
+                                                  CommandParameter="https://www.youtube.com/channel/UCFdpujI8qUuodL7F2jSRMYQ"/>
+                        </Button.GestureRecognizers>
                 </Button>
-
-                <!--
-                <HorizontalStackLayout HorizontalOptions="Center" Padding="10" Spacing="10">
-                    <Image
-                        Source="youtube_logo.svg"
-                        MaximumHeightRequest="20"
-                        HorizontalOptions="Center"/>
-
-                    <Label Text="@gwhsnews4421"
-                           HorizontalTextAlignment="Center"
-                           FontSize="10"
-                           VerticalTextAlignment="Center"/>
-                </HorizontalStackLayout>
-                -->
 
                 <Button Text="Our Twitter"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center">
-
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer Command= "{Binding TapCommand}"
-                        CommandParameter="https://twitter.com/theglenbard"/>
-                    </Button.GestureRecognizers>
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer Command= "{Binding TapCommand}"
+                                                  CommandParameter="https://twitter.com/theglenbard"/>
+                        </Button.GestureRecognizers>
                 </Button>
                 
-                <!--
-                <HorizontalStackLayout HorizontalOptions="Center" Padding="10" Spacing="10">
-                    <Image
-                        Source="twitter_logo.svg"
-                        MaximumHeightRequest="20"
-                        HorizontalOptions="Center"/>
-
-                    <Label Text="@TheGlenBard"
-                           HorizontalTextAlignment="Center"
-                           FontSize="10"
-                           VerticalTextAlignment="Center"/>
-                </HorizontalStackLayout>
-                -->
-
                 <Button Text="Our Facebook"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center">
-
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer Command= "{Binding TapCommand}"
-                        CommandParameter="https://www.facebook.com/TheGlenBard"/>
-                    </Button.GestureRecognizers>
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer Command= "{Binding TapCommand}"
+                                                  CommandParameter="https://www.facebook.com/TheGlenBard"/>
+                        </Button.GestureRecognizers>
                 </Button>
-                
-                <!--
-                <HorizontalStackLayout HorizontalOptions="Center" Padding="10" Spacing="10">
-                    <Image
-                        Source="facebook_logo.svg"
-                        MaximumHeightRequest="20"
-                        HorizontalOptions="Center"/>
-
-                    <Label Text="@TheGlenBardNewspaper"
-                           HorizontalTextAlignment="Center"
-                           FontSize="10"
-                           VerticalTextAlignment="Center"/>
-                </HorizontalStackLayout>
-                -->
-                
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
