@@ -76,10 +76,12 @@
 	  <MauiXaml Update="Pages\StaffProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\CategoryView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="ViewModels\" />
-	  <Folder Include="Views\" />
 	</ItemGroup>
 </Project>
