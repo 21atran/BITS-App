@@ -1,0 +1,57 @@
+\<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BITS_App.Pages.StaffPage"
+             Title="StaffPage">
+    <ScrollView>
+        <CollectionView ItemsSource="{Binding StaffProfiles}"
+                        ItemsLayout="VerticalGrid, 2"
+                        Margin="20">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HeightRequest="100"
+                          BackgroundColor="LightGrey">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" />
+                        </Grid.GestureRecognizers>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0"
+                               Source="{Binding Path=FeaturedMedia, FallbackValue='fallback_image.png', TargetNullValue='fallback_image.png'}"
+                               WidthRequest="100"
+                               HeightRequest="100"
+                               Aspect="AspectFill"/>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             HeightRequest="100"
+                                             HorizontalOptions="FillAndExpand"
+                                             Spacing="5"
+                                             Padding="10">
+                            <Label Text="{Binding Path=Name, FallbackValue='Name', TargetNullValue='null'}"
+                                   FontAttributes="Bold"
+                                   FontSize="15"
+                                   HorizontalTextAlignment="Start"
+                                   LineBreakMode="TailTruncation"
+                                   VerticalTextAlignment="Start"
+                                   TextColor="White"/>
+
+                            <Label Text="{Binding Excerpt}"
+                                   FontAttributes="Bold"
+                                   FontSize="8"
+                                   HeightRequest="40"
+                                   MaxLines="3"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Start"
+                                   TextColor="White"/>
+
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+</ContentPage>

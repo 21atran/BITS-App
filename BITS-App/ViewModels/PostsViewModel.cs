@@ -12,8 +12,6 @@ public class PostsViewModel : INotifyPropertyChanged {
     
     public int[] Categories { get; set; } = new int[0];
 
-	public PostsViewModel() { }
-
     public async Task RefreshAsync() {
         // builds URI for server counterpart to model
         UriBuilder builder = new UriBuilder();

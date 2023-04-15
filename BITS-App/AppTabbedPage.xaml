@@ -21,7 +21,7 @@
     
     <NavigationPage Title="Staff">
         <x:Arguments>
-            <pages:StaffProfilePage/>
+            <pages:StaffPage/>
         </x:Arguments>
     </NavigationPage>
 

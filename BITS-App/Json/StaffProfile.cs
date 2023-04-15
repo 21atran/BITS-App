@@ -50,7 +50,8 @@ public class StaffProfile {
 		}
 	}
     public string excerpt { get; set; }
-    public Uri profileImageUrl { get; set; }
+    // This field causes errors when a profile doesn't have an image set. I assume there's a way to deal with this with the the json library we're using, but time constraints prevent me from doing so. I leave this to posterity to deal with - Ethan
+	//public Uri profileImageUrl { get; set; }
     public Links _links { get; set; }
     public class Links {
         public List<Hyperlink> self { get; set; }

@@ -70,13 +70,15 @@
 	  <MauiXaml Update="Pages\PostPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\StaffPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\StaffProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="ViewModels\" />
 	  <Folder Include="Views\" />
 	</ItemGroup>
 </Project>
