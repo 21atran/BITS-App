@@ -15,7 +15,7 @@
     
     <NavigationPage Title="Topics">
         <x:Arguments>
-            <pages:HomePage/>
+            <pages:CategoryPage/>
         </x:Arguments>
     </NavigationPage>
     
