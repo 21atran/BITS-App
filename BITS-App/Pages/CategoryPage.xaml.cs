@@ -9,7 +9,8 @@ public partial class CategoryPage : ContentPage
         InitializeComponent();
         BindingContext = new PostsViewModel()
         {
-            Categories = new int[] { 11 }
+            Categories = new int[] { 11 },
+            Count = 15
         };
 
         Dispatcher.Dispatch(async () => await ((PostsViewModel)BindingContext).RefreshAsync());
