@@ -24,8 +24,7 @@ public class PostsViewModel : INotifyPropertyChanged {
 
         // attempts to make an HTTP GET request and deserialize it for easy access
         List<Post> postList = new List<Post>();
-        for (int page = 1; page <= Math.Ceiling(Count/10d); page++)
-        {
+        for (int page = 1; page <= Math.Ceiling(Count/10d); page++) {
             builder.Query = await new FormUrlEncodedContent(
                 new Dictionary<string, string> {
                     { "categories", string.Join(", ", Categories) },
@@ -35,39 +34,30 @@ public class PostsViewModel : INotifyPropertyChanged {
             ).ReadAsStringAsync();
             Uri uri = builder.Uri;
 
-            try
-            {
+            try {
                 HttpResponseMessage response = await App.client.GetAsync(uri);
 
-                if (response.IsSuccessStatusCode)
-                {
+                if (response.IsSuccessStatusCode) {
                     string content = await response.Content.ReadAsStringAsync();
                     List<Json.Post> postJsonList = JsonConvert.DeserializeObject<List<Json.Post>>(content);
-
-                    foreach (Json.Post postJson in postJsonList)
-                    {
-                        postList.Add(new Post()
-                        {
+                    foreach (Json.Post postJson in postJsonList) {
+                        postList.Add(new Post() {
                             json = postJson
                         });
                     }
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
 
-            if (postList.Count > Count)
-            {
+            if (postList.Count > Count) {
                 postList.RemoveRange(Count, postList.Count - Count);
             }
 
             Posts = new ObservableCollection<Post>(postList);
             OnPropertyChanged(nameof(Posts));
-        } 
-
-        
+        }        
 
         foreach (Post post in Posts) {
             await post.RefreshAsync();
