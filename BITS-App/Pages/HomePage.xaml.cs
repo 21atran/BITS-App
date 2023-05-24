@@ -6,7 +6,7 @@ public partial class HomePage : ContentPage {
 	public HomePage() {
 		InitializeComponent();
         BindingContext = new PostsViewModel() {
-            Categories = new int[] {11}
+            Categories = new int[] {11},
         };
 
         Dispatcher.Dispatch(async () => await ((PostsViewModel)BindingContext).RefreshAsync());

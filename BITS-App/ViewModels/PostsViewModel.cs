@@ -8,9 +8,27 @@ using System.Runtime.CompilerServices;
 namespace BITS_App.ViewModels;
 
 public class PostsViewModel : INotifyPropertyChanged {
-	public ObservableCollection<Post> Posts { get; private set; }
-    
+    public ObservableCollection<Post> Posts { get; private set; }
+
     public int[] Categories { get; set; } = new int[0];
+    public string Search { get; set; } = "";
+
+    public FormUrlEncodedContent Query {
+        get {
+            Dictionary<string, string> queryDict = new Dictionary<string, string>();
+
+            if (Categories != null && Categories.Length > 0) {
+                queryDict.Add("categories", string.Join(", ", Categories));
+            }
+
+            if (Search != null && Search.Length > 0) {
+                queryDict.Add("search", Search);
+            }
+
+            return new FormUrlEncodedContent(queryDict);
+        }
+    }
+
 
 	public PostsViewModel() { }
 
@@ -20,11 +38,7 @@ public class PostsViewModel : INotifyPropertyChanged {
         builder.Scheme = "https";
         builder.Host = App.BASE_URL;
         builder.Path = "/wp-json/wp/v2/posts";
-        builder.Query = await new FormUrlEncodedContent(
-            new Dictionary<string, string> {
-                { "categories", string.Join(", ", Categories) },
-            }
-        ).ReadAsStringAsync();
+        builder.Query = await Query.ReadAsStringAsync();
         Uri uri = builder.Uri;
 
         // attempts to make an HTTP GET request and deserialize it for easy access

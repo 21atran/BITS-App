@@ -18,7 +18,13 @@
             <pages:HomePage/>
         </x:Arguments>
     </NavigationPage>
-    
+
+    <NavigationPage Title="Search">
+        <x:Arguments>
+            <pages:SearchPage/>
+        </x:Arguments>
+    </NavigationPage>
+
     <NavigationPage Title="Staff">
         <x:Arguments>
             <pages:StaffProfilePage/>

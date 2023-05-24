@@ -56,6 +56,7 @@
 	
 
 	<ItemGroup>
+	  <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="6.0.6" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
 	</ItemGroup>
@@ -70,13 +71,15 @@
 	  <MauiXaml Update="Pages\PostPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\SearchPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\StaffProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="ViewModels\" />
 	  <Folder Include="Views\" />
 	</ItemGroup>
 </Project>

@@ -6,3 +6,4 @@ This software is licensed under the Apache-2.0 license - see LICENSE.txt. Usage 
 
 - Json.NET - see LICENSE-json.net.txt
 - Unifraktur Maguntia - see LICENSE-unifrakturmaguntia.txt
+- AsyncAwaitBestPractices - see LICENSE-asyncawaitbestpractices.txt
